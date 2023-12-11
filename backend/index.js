@@ -27,7 +27,7 @@ async function main() {
     console.log("Successfully connected to MongoDB.");
 
     app.listen(port, () => {
-        console.log('server is running on port' + port);
+        console.log('Server is running on port ' + port);
     // app.listen will start the server and listens for requests 
     // to that port
     
