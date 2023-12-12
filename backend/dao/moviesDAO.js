@@ -61,7 +61,7 @@ export default class MoviesDAO {
 
             cursor = await movies.find(query)
                      .limit(moviesPerPage)
-                     .skip(moviesPerPage + page)
+                     .skip(moviesPerPage * page)
         const moviesList = await cursor.toArray();
 
         // then we get the total number of movies by 
@@ -72,6 +72,8 @@ export default class MoviesDAO {
         return (moviesList, totalNumMovies)
         }
         catch(e){
+            // if an error does occur, we return an empty 
+            // movielist and set totalNumMovies to 0
             console.error(`Unable to execute find command: ${e}`);
             return { moviesList: [], totalNumMovies: 0 }
         }
