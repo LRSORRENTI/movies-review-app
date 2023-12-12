@@ -39,7 +39,7 @@ export default class MoviesDAO {
             if("title" in filters) {
                 query = { $text: { $search: filters['title']}}
             } else if("rated" in filters) {
-                query = { "rated": { $eq: filters["rated"]}}
+                query = { "rated": { $eq: filters['rated']}}
             }
             // if we use the $text query operator with 
             // $search to search for titles and terms
@@ -69,7 +69,7 @@ export default class MoviesDAO {
         // query and return moviesList and totoalNumMovies 
         // in an object
         const totalNumMovies = await movies.countDocuments(query);
-        return (moviesList, totalNumMovies)
+        return {moviesList, totalNumMovies}
         }
         catch(e){
             // if an error does occur, we return an empty 
