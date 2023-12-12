@@ -27,7 +27,9 @@ export default class MoviesController {
             parseInt(req.query.moviesPerPage) : 20
             const page = req.query.page ? parseInt(req.query.page) : 0
 
-            // then we start with an empty filters object
+            // then we start with an empty filters object, no filters applied 
+            // at first 
+
             let filters = {};
             if(req.query.rated){
                 filters.rated = req.query.rated;
@@ -35,7 +37,12 @@ export default class MoviesController {
             else if(req.query.title){
                 filters.title = req.query.title;
             }
+            // above we check if rated query and title query 
+            // exists, then add it to the filter object 
 
+
+            // below we call getMovies from the imported data access 
+            // obejct 
             const {moviesList, totalNumMovies} = await
             MoviesDAO.getMovies({filters, page, moviesPerPage})
 
@@ -46,6 +53,8 @@ export default class MoviesController {
                 entries_per_page: moviesPerPage,
                 total_results: totalNumMovies
             };
+            //finally we send a json response object to the caller of 
+            // the url 
             res.json(response);
     };
 };
