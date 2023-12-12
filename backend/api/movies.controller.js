@@ -1,4 +1,4 @@
-import MoviesDAO from "../dao/moviesDAO";
+import MoviesDAO from "../dao/moviesDAO.js";
 // import movie data access object 
 
 export default class MoviesController {
