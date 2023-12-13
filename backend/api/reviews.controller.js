@@ -70,5 +70,20 @@ export default class ReviewsController {
                 res.status(500).json( {error: e.message} )
             };
     };
+        static async apiDeleteReview(req, res, next) {
+            // just like the other methods we extract 
+            // the id's and data needed to delete 
+            try {
+                const reviewId = req.body.review_id;
+                const userId = req.body.user_id;
+                const reviewResponse = await ReviewsDAO.deleteReview(
+                    reviewId, 
+                    userId
+                )
 
+                res.json( {status: "success"} )
+            } catch (e) {
+                res.status(500).json( {error: e.message} )
+            }
+        }
 };
