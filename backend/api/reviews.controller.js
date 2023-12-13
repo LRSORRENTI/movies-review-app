@@ -36,6 +36,39 @@ export default class ReviewsController {
             res.json( {status: "success"} )
         } catch (e) {
             res.status(500).json( {error: e.message } )
+        };
+    };
+
+    // add apiUpdayeReview method: 
+
+    static async apiUpdateReview(req, res, next) {
+        // like the post review method, this method will 
+        // also be called by the frontend 
+        try {
+            const reviewId = req.body.review_id;
+            const review = req.body.review;
+
+            const date = new Date();
+
+            const reviewResponse = await ReviewsDAO.updateReview(
+                reviewId,
+                req.body.user_id,
+                review,
+                date
+            )
+
+            let { error } = reviewResponse;
+            if(error) {
+                res.status.json( {error} )
+            };
+            if(reviewResponse.modifiedCount === 0) {
+                throw new Error("Unable to update review")
+            };
+            res.json( {status: "success"} )
         }
-    }
-}
+            catch(e) {
+                res.status(500).json( {error: e.message} )
+            };
+    };
+
+};
