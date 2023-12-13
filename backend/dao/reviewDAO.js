@@ -64,6 +64,22 @@ export default class ReviewsDAO {
             return { error: e }
         }
     }
+    static async deleteReview(reviewId, userId) {
+        // same setup for deleting reviews, we 
+        // specify the object id and pass in the 
+        // review id, if it exists it gets deleted 
+        try {
+            const deleteResponse = await reviews.deleteOne({
+                _id: ObjectId(reviewId),
+                user_id: userId
+            })
+            return deleteResponse
+        }
+        catch(e) {
+            console.error(`unable to delete review: ${e}`);
+            return { error: e }
+        };
+    }
 };
 
 // if reviews isn't filled mongodb will auto create it 
