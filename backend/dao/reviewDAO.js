@@ -40,6 +40,30 @@ export default class ReviewsDAO {
             return { error: e };
         };
     };
+
+    static async updateReview(reviewId, userId, review, date) {
+        // when calling update review we specify 
+        // the first argument: {user_id: userId, _id: ObjectId(reviewId)}
+        // to flter for an existing review created by that user and 
+        // with the review id, if it exists we update it with 
+        // the second argument
+        try {
+            const updateResponse = await reviews.updateOne(
+                {
+                    user_id: userId,
+                    _id: ObjectId(reviewId)
+                },
+                {
+                    $set:{review: review, date: date}
+                }
+            )
+             return updateResponse;
+        }
+        catch(e) {
+            console.error(`unable to update review ${e}`)
+            return { error: e }
+        }
+    }
 };
 
 // if reviews isn't filled mongodb will auto create it 
