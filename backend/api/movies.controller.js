@@ -67,7 +67,7 @@ export default class MoviesController {
             
             // then below we call the data access object to 
             // return a spcific movie 
-            let movie = await MoviesDAO.apiGetMovieById(id)
+            let movie = await MoviesDAO.getMoviesById(id)
             if(!movie) {
                 res.status(404).json({error: "movie not found"})
                 return 
