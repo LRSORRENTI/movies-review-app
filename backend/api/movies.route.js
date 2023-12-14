@@ -20,4 +20,12 @@ router.route('/review')
       .put(ReviewsController.apiUpdateReview)
       .delete(ReviewsController.apiDeleteReview)
 
+router.route("/id/:id").get(MoviesController.apiGetMoviesById)
+// the above route will get a specific movie and all 
+// reviews for that movie 
+
+router.route("/ratings").get(MoviesController.apiGetRatings)
+// the above route will get a list of movie ratings,
+// so a user can select ratings
+
 export default router;

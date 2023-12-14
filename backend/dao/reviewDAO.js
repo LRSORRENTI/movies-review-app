@@ -83,3 +83,17 @@ export default class ReviewsDAO {
 };
 
 // if reviews isn't filled mongodb will auto create it 
+
+/* 
+
+The new keyword is necessary to correctly convert 
+string representations of MongoDB's ObjectIds 
+into actual ObjectId instances. This conversion is 
+crucial for your MongoDB operations to correctly 
+identify and interact with the specific documents 
+in your database based on their _id fields. 
+
+Without this conversion, MongoDB won't be able to 
+match the string ID to the actual ObjectId in the 
+database, leading to errors or failed operations.
+*/
