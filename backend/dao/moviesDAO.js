@@ -78,5 +78,20 @@ export default class MoviesDAO {
             return { moviesList: [], totalNumMovies: 0 }
         }
     }
+    static async getRatings() {
+        let ratings = [];
+        try {
+            // we use .dstinct to get all distinct 
+            // rated values in the movies collection, then 
+            // assign them in the array 
+            ratings = await movies.distinct("rated")
+            return ratings;
+        }
+        catch(e) {
+            console.error(`unable to get ratings in moviesDAO.js getRatings method 
+            e: ${e}`)
+        }
+        return ratings;
+    }
 };
 
