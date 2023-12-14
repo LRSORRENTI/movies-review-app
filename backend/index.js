@@ -1,6 +1,8 @@
 import app from "./server.js";
 import mongodb from 'mongodb';
 import dotenv from 'dotenv';
+import MoviesDAO from "./dao/moviesDAO.js";
+import ReviewsDAO from "./dao/reviewDAO.js";
 
 // main function will connect to mongodb and 
 // call functions to aceess database
@@ -23,7 +25,12 @@ async function main() {
 
     await client.connect();
     // await further execution until client connects
-
+    await MoviesDAO.injectDB(client);
+    // What the above does is right after a connection, 
+    // amd just before we start the server, we call injectDB 
+    // to get the initial refernce to the movies collection in the 
+    // database
+    await ReviewsDAO.injectDB(client);
     console.log("Successfully connected to MongoDB.");
 
     app.listen(port, () => {

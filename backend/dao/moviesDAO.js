@@ -1,3 +1,7 @@
+import mongodb from 'mongodb';
+
+const ObjectId = mongodb.ObjectId;
+
 
 // movies will store the reference to the database
 let movies;
@@ -39,7 +43,7 @@ export default class MoviesDAO {
             if("title" in filters) {
                 query = { $text: { $search: filters['title']}}
             } else if("rated" in filters) {
-                query = { "rated": { $eq: filters["rated"]}}
+                query = { "rated": { $eq: filters['rated']}}
             }
             // if we use the $text query operator with 
             // $search to search for titles and terms
@@ -61,7 +65,7 @@ export default class MoviesDAO {
 
             cursor = await movies.find(query)
                      .limit(moviesPerPage)
-                     .skip(moviesPerPage + page)
+                     .skip(moviesPerPage * page)
         const moviesList = await cursor.toArray();
 
         // then we get the total number of movies by 
@@ -69,12 +73,61 @@ export default class MoviesDAO {
         // query and return moviesList and totoalNumMovies 
         // in an object
         const totalNumMovies = await movies.countDocuments(query);
-        return (moviesList, totalNumMovies)
+        return {moviesList, totalNumMovies}
         }
         catch(e){
+            // if an error does occur, we return an empty 
+            // movielist and set totalNumMovies to 0
             console.error(`Unable to execute find command: ${e}`);
             return { moviesList: [], totalNumMovies: 0 }
+        };
+    };
+
+    static async getMoviesById(id) {
+        try {
+            // we use aggregate to give a sequence of 
+            // data aggregation operations, the first operation
+            // $match will look up the movie document that matches 
+            // that id 
+            return await movies.aggregate([
+                {
+                    $match: {
+                        _id: new ObjectId(id),
+                    }
+                } ,
+                {
+                    // the second operation $lookup will perform 
+                    // an equality join using _id from the document 
+                    // in movies review collection
+                    $lookup: {
+                        from: 'reviews',
+                        localField: '_id',
+                        foreignField: 'movie_id',
+                        as: 'reviews'
+                    }
+                }
+            ]).next()
         }
+        catch(e) {
+            console.error(`error in getMoviesById method inside moviesDAO e:${e}`)
+            throw e;
+        }
+    }
+
+    static async getRatings() {
+        let ratings = []
+        try {
+            // we use .dstinct to get all distinct 
+            // rated values in the movies collection, then 
+            // assign them in the array 
+            ratings = await movies.distinct("rated")
+            return ratings
+        }
+        catch(e) {
+            console.error(`unable to get ratings in moviesDAO.js getRatings method 
+            e: ${e}`)
+        }
+        return ratings;
     }
 };
 
