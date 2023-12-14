@@ -57,4 +57,19 @@ export default class MoviesController {
             // the url 
             res.json(response);
     };
+    static async apiGetMovieById(req, res, next) {
+        try {
+            let id = req.params.id || {}
+            let movie = await MoviesDAO.apiGetMovieById(id)
+            if(!movie) {
+                res.status(404).json({error: "movie not found"})
+                return 
+            }
+            res.json(movie)
+        }
+        catch(e) {
+            console.log(`api error in apiGetMoviesById: e: ${e}`)
+            res.status(500).json({error: e})
+        }
+    }
 };
