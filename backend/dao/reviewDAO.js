@@ -31,12 +31,12 @@ export default class ReviewsDAO {
                 review: review,
                 // we use the ObjectId method to 
                 // turn movie id into a mongo db object id 
-                movie_id: ObjectId(movieId)
+                movie_id: new ObjectId(movieId)
             };
             return await reviews.insertOne(reviewDoc);
         }
         catch(e) {
-            console.error(`unable to post review ${e}`)
+            console.error(`Unable to post review ${e}`)
             return { error: e };
         };
     };
@@ -51,7 +51,7 @@ export default class ReviewsDAO {
             const updateResponse = await reviews.updateOne(
                 {
                     user_id: userId,
-                    _id: ObjectId(reviewId)
+                    _id: new ObjectId(reviewId)
                 },
                 {
                     $set:{review: review, date: date}
@@ -60,7 +60,7 @@ export default class ReviewsDAO {
              return updateResponse;
         }
         catch(e) {
-            console.error(`unable to update review ${e}`)
+            console.error(`Unable to update review ${e}`)
             return { error: e }
         }
     }
@@ -70,7 +70,7 @@ export default class ReviewsDAO {
         // review id, if it exists it gets deleted 
         try {
             const deleteResponse = await reviews.deleteOne({
-                _id: ObjectId(reviewId),
+                _id: new ObjectId(reviewId),
                 user_id: userId
             })
             return deleteResponse

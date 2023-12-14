@@ -1,4 +1,4 @@
-import ReviewsDAO from '..dao/reviewsDAO.js';
+import ReviewsDAO from '../dao/reviewDAO.js'
 
 export default class ReviewsController {
     static async apiPostReview(req, res, next) {
@@ -27,7 +27,7 @@ export default class ReviewsController {
                 _id: req.body.user_id
             };
             const date = new Date();
-            const ReviewResponse = await ReviewsDAO.addReview(
+            const reviewResponse = await ReviewsDAO.addReview(
                 movieId,
                 userInfo,
                 review,
