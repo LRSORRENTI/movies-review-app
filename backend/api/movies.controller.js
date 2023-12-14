@@ -60,6 +60,13 @@ export default class MoviesController {
     static async apiGetMovieById(req, res, next) {
         try {
             let id = req.params.id || {}
+
+            // first we look for an id param, which is 
+            // the value after the '/' in the url,
+            // localhost:5000/api/v1/id/12345
+            
+            // then below we call the data access object to 
+            // return a spcific movie 
             let movie = await MoviesDAO.apiGetMovieById(id)
             if(!movie) {
                 res.status(404).json({error: "movie not found"})
@@ -68,7 +75,17 @@ export default class MoviesController {
             res.json(movie)
         }
         catch(e) {
-            console.log(`api error in apiGetMoviesById: e: ${e}`)
+            console.log(`api error in apiGetMoviesById in movies.controller.js: e: ${e}`)
+            res.status(500).json({error: e})
+        };
+    };
+    static async apiGetRatings(req, res, next) {
+        try {
+            let propertyTypes = await MoviesDAO.getRatings()
+            res.json(propertyTypes)
+        }
+        catch(e) {
+            console.log(`error in apiGetRatings in movies.controller.js: ${e} `)
             res.status(500).json({error: e})
         }
     }
