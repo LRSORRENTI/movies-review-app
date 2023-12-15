@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -13,6 +13,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 export default function App() {
+  const [user, setUser] = useState(null);
+
+  const login = async (user = null) => {
+    setUser(user)
+  }
+
+  const logout = async () => {
+    setUser(null)
+  }
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -25,8 +35,8 @@ export default function App() {
               </Nav.Link>
             <Nav.Link>
               {
-                true ? (
-                  <a>Logout user</a>
+                user ? (
+                  <a onClick={logout}>Logout user</a>
                 ) : (
                   <Link to={"/login"}>Login</Link>
                 )
