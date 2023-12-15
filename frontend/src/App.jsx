@@ -25,7 +25,7 @@ export default function App() {
               </Nav.Link>
             <Nav.Link>
               {
-                user ? (
+                true ? (
                   <a>Logout user</a>
                 ) : (
                   <Link to={"/login"}>Login</Link>
