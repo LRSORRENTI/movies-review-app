@@ -12,7 +12,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const MoviesList = props => {
     const [movies, setMovies] = useState([]);
     const [searchTitle, setSearchTitle] = useState("");
-    const [searchRatings, setSearchRatings] = useState("");
+    const [searchRating, setSearchRatings] = useState("");
     const [ratings, setRatings] = useState(["All Ratings"]);
 
 
@@ -53,6 +53,30 @@ const onChnageSearchRating = (e) => {
     const searchRating = e.target.value;
     setSearchRatings(searchRating)
 };
+
+const find = (query, by) => {
+    MovieDataService.find(query, by)
+        .then(res => {
+            console.log(res.data)
+            setMovies(res.data.movies)
+        })
+        .catch( error => {
+            console.log(error)
+        })
+};
+
+const findByTitle = () => {
+    find(searchTitle, "title");
+}
+
+const findByRating = () => {
+    if(searchRating === "All Ratings") {
+        retrieveMovies()
+    }
+    else {
+        find(searchRating, "rated")
+    }
+}
 
 return (
     <div className="App">
