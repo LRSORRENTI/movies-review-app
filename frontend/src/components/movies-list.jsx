@@ -8,6 +8,16 @@ const MoviesList = (props) => {
     const [searchRatings, setSearchRatings] = useState("");
     const [ratings, setRatings] = useState(["All Ratings"]);
 
+    useEffect(() => {
+        MovieDataService.getAll()
+        .then(res => {
+            console.log(res.data)
+            setMovies(res.data.movies)
+        })
+        .catch( error => {
+            console.log(error)
+        })
+    })
 }
 
 
