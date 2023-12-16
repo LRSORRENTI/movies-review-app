@@ -1,4 +1,11 @@
 import React, {useState, useEffect} from "react";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Col from "react-bootstrap/Col";
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+
+
 import MovieDataService from '../services/movies.js';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -50,7 +57,20 @@ const onChnageSearchRating = (e) => {
 return (
     <div className="App">
         <Container>
-            
+            <Form>
+                <Row>
+                    <Col>
+                        <Form.Group>
+                            <Form.Control 
+                              type="text"
+                              placeholder="Search by title"
+                              value={searchTitle}
+                              onChange={onChangeSearchTitle}
+                              />
+                        </Form.Group>
+                    </Col>
+                </Row>
+            </Form>
         </Container>
     </div>
 )
