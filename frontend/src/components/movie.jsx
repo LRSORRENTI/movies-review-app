@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MovieDataService from '../services/movies.js';
 import Link from 'react-router-dom';
-
+import momemt from 'moment';
 
 import {Card, Container, Image, Col, Row, Button, Media} from 'react-bootstrap' 
 
@@ -60,7 +60,7 @@ export default function Movie(props) {
                         return (
                             <Media key={index}>
                                 <Media.Body>
-                                    <h5>{review.name + " reviewed on " + review.data}</h5>
+                                    <h5>{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
                                     <p>{review.review}</p>
                                     {props.user && props.user.id == review.user_id && 
                                         <Row>
