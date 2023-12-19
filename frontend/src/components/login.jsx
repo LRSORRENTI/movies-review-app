@@ -33,8 +33,31 @@ export default function Login(props) {
         <div>
             <Form>
                 <Form.Group>
-                    
+                    <Form.Label>
+                        Username
+                    </Form.Label>
+                    <Form.Control 
+                     type="text"
+                     placeholder="Enter username"
+                     value={name}
+                     onChange={onChangeName}
+                     />
                 </Form.Group>
+                <Form.Group>
+                    <Form.Label>
+                        ID
+                    </Form.Label>
+                    <Form.Control
+                     type="text"
+                     placeholder="Enter ID"
+                     value={id}
+                     onChange={onChangeID}
+                     />
+                </Form.Group>
+                <Button variant="primary"
+                        onClick={login}>
+                    Submit
+                </Button>
             </Form>
         </div>
     );
