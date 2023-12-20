@@ -16,6 +16,21 @@ import Button from 'react-bootstrap/Button'
         setReview(review);
     }
 
+    const saveReview = () => {
+        let data = {
+            review: review,
+            name: props.user.name,
+            user_id: props.user.id,
+            movie_id: props.match.params.id
+        }
+        MovieDataService.createReview(data)
+        .then(res => {
+            setSubmitted(true)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
     return (
         <div className="App">
             Add Review
