@@ -1,41 +1,84 @@
-import React, { useState } from "react";
-import MovieDataService from '../services/movies';
-import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button'
+import React, {useState} from 'react';
+import MovieDataService from '../services/movies.js';
+import { Link, useParams } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
 
- const AddReview = props => {
-    let editing = false;
-    let intialReviewState = "";
+const AddReview = (props) => {
 
-    const [review, setReview] = useState(intialReviewState);
-    const [submitted, setSubmitted] = useState(false);
+  const { id } = useParams()
 
-    const onChangeReview = evt => {
-        const review = evt.target.value;
-        setReview(review);
+  let editing = false;
+  let initialReviewState = "";
+
+  if (props.location && props.location.currentReview) {
+    editing = true;
+    initialReviewState = props.location.currentReview.review;
+  }
+
+  const [review, setReview] = useState(initialReviewState);
+  const [submitted, setSubmitted] = useState(false);
+
+  const onChangeReview = (e) => {
+    const review = e.target.value
+    setReview(review)
+  }
+
+  const saveReview = () => {
+    var data = {
+      review: review,
+      name: props.user.name,
+      user_id: props.user.id,
+      movie_id: id
     }
 
-    const saveReview = () => {
-        let data = {
-            review: review,
-            name: props.user.name,
-            user_id: props.user.id,
-            movie_id: props.match.params.id
-        }
-        MovieDataService.createReview(data)
-        .then(res => {
-            setSubmitted(true)
-        }).catch(err => {
-            console.log(err)
-        })
+    if (editing) {
+      data.review = props.location.state.currentReview._id
+      MovieDataService.updateReview(data)
+      .then(response => {
+        setSubmitted(true);
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    } else {
+          MovieDataService.createReview(data)
+            .then(response => {
+              setSubmitted(true)
+            })
+            .catch(error => {
+              console.log(error)
+            })
     }
+  }
 
-    return (
-        <div className="App">
-            Add Review
+  return (
+    <div>
+        {submitted ? (
+        <div>
+          <h4>Review submitted successful</h4>
+          <Link to={`/movies/${id}`}>
+            Back to movie
+          </Link>
         </div>
-    );
-};
+        ) : (
+          <Form>
+            <Form.Group>
+              <Form.Label>{editing? "Edit" : "Create"}</Form.Label>
+              <Form.Control
+                type="text"
+                required
+                value={review}
+                onChange={onChangeReview}
+              />
+            </Form.Group>
+            <Button variant='primary' onClick={saveReview}>
+              Submit
+            </Button>
+          </Form>
+        )}
+    </div>
+  )
+}
 
-export default AddReview;
+export default AddReview

@@ -9,7 +9,7 @@ import Image from 'react-bootstrap/Image'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
-import Media from 'react-bootstrap/Media'
+// import Media from 'react-bootstrap/Media'
 
 export default function Movie(props) {
     
@@ -64,25 +64,44 @@ export default function Movie(props) {
                     <br></br>
                     {movie.reviews.map((review, index) => {
                         return (
-                            <Media key={index}>
-                                <Media.Body>
-                                    <h5>{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
-                                    <p>{review.review}</p>
-                                    {props.user && props.user.id === review.user_id && 
-                                        <Row>
-                                            <Col>
-                                                <Link to={{
-                                                    pathname:"/movies/" + 
-                                                             props.match.params.id + 
-                                                             "/review",
-                                                    state: {currentReview: review}
-                                                }}>Edit</Link>
-                                            </Col>
-                                            <Col><Button variant="link">Delete</Button></Col>
-                                        </Row>
-                                    }
-                                </Media.Body>
-                            </Media>
+                            // <Media key={index}>
+                            //     <Media.Body>
+                            //         <h5>{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
+                            //         <p>{review.review}</p>
+                            //         {props.user && props.user.id === review.user_id && 
+                            //             <Row>
+                            //                 <Col>
+                            //                     <Link to={{
+                            //                         pathname:"/movies/" + 
+                            //                                  props.match.params.id + 
+                            //                                  "/review",
+                            //                         state: {currentReview: review}
+                            //                     }}>Edit</Link>
+                            //                 </Col>
+                            //                 <Col><Button variant="link">Delete</Button></Col>
+                            //             </Row>
+                            //         }
+                            //     </Media.Body>
+                            // </Media>
+                            <Card key={index}>
+                            <Card.Body>
+                                <h5>{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
+                                <p>{review.review}</p>
+                                {props.user && props.user.id === review.user_id && 
+                                    <Row>
+                                        <Col>
+                                            <Link to={{
+                                                pathname:"/movies/" + 
+                                                         props.match.params.id + 
+                                                         "/review",
+                                                state: {currentReview: review}
+                                            }}>Edit</Link>
+                                        </Col>
+                                        <Col><Button variant="link">Delete</Button></Col>
+                                    </Row>
+                                }
+                            </Card.Body>
+                        </Card>
                         )
                     })}
                     </Col>
