@@ -14,21 +14,32 @@ import Button from 'react-bootstrap/Button';
 export default function Login(props) {
     const [name, setName] = useState("")
     const [id, setId] = useState("")
+    // set intitial names to emptry strings
+
 
     const onChangeName = (evt) => {
         const name = evt.target.value;
         setName(name)
     }
 
+
     const onChangeID = (evt) => {
         const id = evt.target.value;
         setId(id)
     }
 
+    // bind the input fields from the above 
+    // functions 
+
     const login = () => {
         props.login({name: name, id: id})
         props.history.push('/')
     }
+    // When submit is pressed it calls login, remember 
+    // in App.jsx:
+    // <Route path="/login" render={(props) => (
+    //     <Login {...props} login={login} />)}/>
+
     return (
         <div>
             <Form>

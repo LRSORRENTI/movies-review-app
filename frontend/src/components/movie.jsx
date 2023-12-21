@@ -24,6 +24,25 @@ export default function Movie(props) {
         reviews: []
     })
 
+    const deleteReview = (reviewId, index) => {
+        // this function will call the MovieDataService
+        // delete endpoint on the reviews controller on 
+        // the backend
+        MovieDataService.deleteReview(reviewId, props.user.id)
+        .then(res => {
+            setMovie((prevState) => {
+                prevState.reviews.splice(index, 1)
+                // then we return the reviews array below 
+                return ({
+                    ...prevState
+                })
+            })
+        }).catch(err => {
+            console.log(err)
+        })
+
+    }
+
     const getMovie = id => {
         // the method calls get of the MovieDataService//
         // which is what callsthe API route on the backend
@@ -97,7 +116,10 @@ export default function Movie(props) {
                                                 state: {currentReview: review}
                                             }}>Edit</Link>
                                         </Col>
-                                        <Col><Button variant="link">Delete</Button></Col>
+                                        <Col>
+                                        <Button variant="link" onClick={() => deleteReview(review._id, index)}>
+                                            Delete</Button>
+                                        </Col>
                                     </Row>
                                 }
                             </Card.Body>
