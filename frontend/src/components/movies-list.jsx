@@ -9,40 +9,71 @@ import Card from 'react-bootstrap/Card';
 import MovieDataService from '../services/movies.js';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
+import '../movie-list.css'
+
 const MoviesList = props => {
     const [movies, setMovies] = useState([]);
     const [searchTitle, setSearchTitle] = useState("");
     const [searchRating, setSearchRatings] = useState("");
     const [ratings, setRatings] = useState(["All Ratings"]);
 
+    const [currentPage, setCurrentPage] = useState(0);
+    const [entriesPerPage, setEntriesPerPage] = useState(0);
+    // above we have two state vars, to keep track of 
+    // the current displayed page and number of entries 
 
-useEffect(() => {
-    retrieveMovies()
-    retrieveRatings()
-}, [])
+    const [currentSearchMode, setCurrentSearchMode] = useState("")
+
+
+    const retrieveNextPage = () => {
+        if(currentSearchMode === 'findByTitle')
+        findByTitle()
+        else if(currentSearchMode === 'findByRating')
+        findByRating()
+        else retrieveMovies()
+    }
+
+        useEffect(() => {
+        setCurrentPage(0)
+        }, [currentSearchMode])
+
+        useEffect(() => {
+        // retrieveMovies()
+         retrieveNextPage()
+        }, [currentPage])
+
+
+
+        // useEffect(() => {
+        // retrieveMovies()
+        // retrieveRatings()
+        // }, [currentPage])
 
 
 const retrieveMovies = () => {
+    setCurrentSearchMode("")
     MovieDataService.getAll()
     .then(res => {
         console.log(res.data)
         setMovies(res.data.movies)
+        setCurrentPage(res.data.page)
+        setEntriesPerPage(res.data.entries_per_page)
     })
     .catch(error => {
         console.log(error)
     })
 }
 
-const retrieveRatings = () => {
-    MovieDataService.getRatings()
-        .then(res => {
-            console.log(res.data)
-            setRatings(["All Ratings"].concat(res.data))
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    };
+// const retrieveRatings = () => {
+//     MovieDataService.getRatings()
+//         .then(res => {
+//             console.log(res.data)
+//             setRatings(["All Ratings"].concat(res.data))
+//         })
+//         .catch(error => {
+//             console.log(error)
+//         })
+//     };
 
 const onChangeSearchTitle = (e) => {
     const searchTitle = e.target.value;
@@ -55,7 +86,7 @@ const onChnageSearchRating = (e) => {
 };
 
 const find = (query, by) => {
-    MovieDataService.find(query, by)
+    MovieDataService.find(query, by, currentPage)
         .then(res => {
             console.log(res.data)
             setMovies(res.data.movies)
@@ -66,10 +97,12 @@ const find = (query, by) => {
 };
 
 const findByTitle = () => {
+    setCurrentSearchMode("findByTitle")
     find(searchTitle, "title");
 }
 
 const findByRating = () => {
+    setCurrentSearchMode("findByRating")
     if(searchRating === "All Ratings") {
         retrieveMovies()
     }
@@ -81,7 +114,7 @@ const findByRating = () => {
 return (
     <div className="App">
         <Container>
-            <Form>
+            <Form className="search">
                 <Row>
                     <Col>
                         <Form.Group>
@@ -92,11 +125,11 @@ return (
                               onChange={onChangeSearchTitle}
                               />
                         </Form.Group>
-                        <Button 
-                         variant="primary"
+                        <Button className="searchBtn"
+                        
                          type="button"
                          onClick={findByTitle}>
-                            Search
+                            Search by title
                          </Button>
                     </Col>
                     <Col>
@@ -111,10 +144,11 @@ return (
                         })}
                         </Form.Control>
                      </Form.Group>
-                     <Button variant="primary"
+                     <Button 
                              type="button"
+                             className="searchBtn"
                              onClick={findByRating}>
-                                Search
+                                Search by rating
                              </Button>
 
                     </Col>
@@ -139,6 +173,11 @@ return (
                     )
                 })}
             </Row>
+            <br/>
+            Showing page: {currentPage}
+            <Button variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
+                Get next {entriesPerPage} results
+            </Button>
         </Container>
     </div>
 )

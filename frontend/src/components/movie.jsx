@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import MovieDataService from '../services/movies.js';
-import Link from 'react-router-dom';
+import Link from 'react-router-dom/Link.js';
 import momemt from 'moment';
 
-import {Card, Container, Image, Col, Row, Button, Media} from 'react-bootstrap' 
+import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
+import Image from 'react-bootstrap/Image'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import Button from 'react-bootstrap/Button'
+// import Media from 'react-bootstrap/Media'
 
 export default function Movie(props) {
     
@@ -17,6 +23,25 @@ export default function Movie(props) {
         rated: "",
         reviews: []
     })
+
+    const deleteReview = (reviewId, index) => {
+        // this function will call the MovieDataService
+        // delete endpoint on the reviews controller on 
+        // the backend
+        MovieDataService.deleteReview(reviewId, props.user.id)
+        .then(res => {
+            setMovie((prevState) => {
+                prevState.reviews.splice(index, 1)
+                // then we return the reviews array below 
+                return ({
+                    ...prevState
+                })
+            })
+        }).catch(err => {
+            console.log(err)
+        })
+
+    }
 
     const getMovie = id => {
         // the method calls get of the MovieDataService//
@@ -58,25 +83,47 @@ export default function Movie(props) {
                     <br></br>
                     {movie.reviews.map((review, index) => {
                         return (
-                            <Media key={index}>
-                                <Media.Body>
-                                    <h5>{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
-                                    <p>{review.review}</p>
-                                    {props.user && props.user.id == review.user_id && 
-                                        <Row>
-                                            <Col>
-                                                <Link to={{
-                                                    pathname:"/movies/" + 
-                                                             props.match.params.id + 
-                                                             "/review",
-                                                    state: {currentReview: review}
-                                                }}>Edit</Link>
-                                            </Col>
-                                            <Col><Button variant="link">Delete</Button></Col>
-                                        </Row>
-                                    }
-                                </Media.Body>
-                            </Media>
+                            // <Media key={index}>
+                            //     <Media.Body>
+                            //         <h5>{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
+                            //         <p>{review.review}</p>
+                            //         {props.user && props.user.id === review.user_id && 
+                            //             <Row>
+                            //                 <Col>
+                            //                     <Link to={{
+                            //                         pathname:"/movies/" + 
+                            //                                  props.match.params.id + 
+                            //                                  "/review",
+                            //                         state: {currentReview: review}
+                            //                     }}>Edit</Link>
+                            //                 </Col>
+                            //                 <Col><Button variant="link">Delete</Button></Col>
+                            //             </Row>
+                            //         }
+                            //     </Media.Body>
+                            // </Media>
+                            <Card key={index}>
+                            <Card.Body>
+                                <h5>{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
+                                <p>{review.review}</p>
+                                {props.user && props.user.id === review.user_id && 
+                                    <Row>
+                                        <Col>
+                                            <Link to={{
+                                                pathname:"/movies/" + 
+                                                         props.match.params.id + 
+                                                         "/review",
+                                                state: {currentReview: review}
+                                            }}>Edit</Link>
+                                        </Col>
+                                        <Col>
+                                        <Button variant="link" onClick={() => deleteReview(review._id, index)}>
+                                            Delete</Button>
+                                        </Col>
+                                    </Row>
+                                }
+                            </Card.Body>
+                        </Card>
                         )
                     })}
                     </Col>

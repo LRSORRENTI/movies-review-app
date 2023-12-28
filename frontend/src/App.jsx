@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
-
+import '../src/App.css'
 // Components:
 import AddReview from "./components/add-review";
 import MoviesList from "./components/movies-list";
@@ -11,6 +11,7 @@ import Login from "./components/login";
 // React bootstrap components:
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -25,20 +26,20 @@ export default function App() {
 
   return (
     <div className="App">
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Movie Reviews</Navbar.Brand>
+      <Navbar className="nav" expand="lg">
+        <Navbar.Brand href="#home"><p class=" movies text-light fs-4 mt-1 ms-2" >Movie Reviews</p></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="mr-auto mb-2">
             <Nav.Link>
-              <Link to={"/movies"}>Movies</Link>
+              <Link className="link" to={"/movies"}>Movies</Link>
               </Nav.Link>
             <Nav.Link>
               {
                 user ? (
                   <a onClick={logout}>Logout user</a>
                 ) : (
-                  <Link to={"/login"}>Login</Link>
+                  <Link className="link" to={"/login"}>Login</Link>
                 )
               }
             </Nav.Link>
