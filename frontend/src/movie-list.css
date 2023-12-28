@@ -1,0 +1,20 @@
+.search {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.searchBtn {
+  background-color: var(--purp);
+  color: #fff;
+  padding: 5px 9px 5px 9px;
+  margin-top: 10px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #fff;
+}
+
+.searchBtn:hover {
+  text-decoration: underline;
+  background-color: var(--purp);
+  border: 2px solid #fff;
+}

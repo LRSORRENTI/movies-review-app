@@ -9,6 +9,8 @@ import Card from 'react-bootstrap/Card';
 import MovieDataService from '../services/movies.js';
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
+import '../movie-list.css'
+
 const MoviesList = props => {
     const [movies, setMovies] = useState([]);
     const [searchTitle, setSearchTitle] = useState("");
@@ -112,7 +114,7 @@ const findByRating = () => {
 return (
     <div className="App">
         <Container>
-            <Form>
+            <Form className="search">
                 <Row>
                     <Col>
                         <Form.Group>
@@ -123,8 +125,8 @@ return (
                               onChange={onChangeSearchTitle}
                               />
                         </Form.Group>
-                        <Button 
-                         variant="primary"
+                        <Button className="searchBtn"
+                        
                          type="button"
                          onClick={findByTitle}>
                             Search by title
@@ -142,8 +144,9 @@ return (
                         })}
                         </Form.Control>
                      </Form.Group>
-                     <Button variant="primary"
+                     <Button 
                              type="button"
+                             className="searchBtn"
                              onClick={findByRating}>
                                 Search by rating
                              </Button>
