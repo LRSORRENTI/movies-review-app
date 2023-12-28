@@ -9,6 +9,8 @@
 
 .nav {
   background-color: var(--purp);
+  padding-bottom: 0px;
+  padding-top: -1px;
 }
 
 .movies {
