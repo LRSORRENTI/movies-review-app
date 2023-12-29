@@ -140,9 +140,10 @@ const getRatingText = (rating) => {
 return (
     <div className="App">
         <Container>
+            <div className="wrapper1">
             <Form className="search">
-                <Row>
-                    <Col>
+                <Row className="row1">
+                    <Col className="topCol">
                         <Form.Group>
                             <Form.Control 
                               type="text"
@@ -161,6 +162,7 @@ return (
                     <Col>
                      <Form.Group>
                         <Form.Control
+                        className="ratingForm"
                         as="select"
                         onChange={onChnageSearchRating}>
                         {ratings.map(rating => {
@@ -180,7 +182,8 @@ return (
                     </Col>
                 </Row>
             </Form>
-            <Row>
+            </div>
+            <Row className="movie-row">
                 {movies.map((movie) => {
                     return (
                         <Col>
