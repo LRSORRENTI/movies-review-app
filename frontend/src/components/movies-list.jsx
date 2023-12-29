@@ -76,8 +76,7 @@ const retrieveMovies = () => {
 //     };
 
 const onChangeSearchTitle = (e) => {
-    const searchTitle = e.target.value;
-    setSearchTitle(searchTitle);
+    setSearchTitle(e.target.value);
 };
 
 const onChnageSearchRating = (e) => {
@@ -97,9 +96,15 @@ const find = (query, by) => {
 };
 
 const findByTitle = () => {
-    setCurrentSearchMode("findByTitle")
-    find(searchTitle, "title");
-}
+    setCurrentSearchMode("findByTitle");
+    
+    let searchQuery = searchTitle.trim();
+    if (searchQuery) {
+        searchQuery = `"${searchQuery}"`;
+    }
+
+    find(searchQuery, "title");
+};
 
 const findByRating = () => {
     setCurrentSearchMode("findByRating")
@@ -110,6 +115,24 @@ const findByRating = () => {
         find(searchRating, "rated")
     }
 }
+
+function isValidHttpUrl(string) {
+    let url;
+
+    try {
+        url = new URL(string);
+    } catch (_) {
+        return false;  
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+}
+
+{/* <Card.Img 
+    src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
+    onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
+/> */}
+
 
 return (
     <div className="App">
@@ -158,15 +181,20 @@ return (
                 {movies.map((movie) => {
                     return (
                         <Col>
-                            <Card style={{width: '18rem'}}>
-                                <Card.Img src={movie.poster+"/100px180"}/>
+                            <Card style={{width: '18rem', marginBottom: "20px"}}>
+                            {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
+                            <Card.Img 
+    src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
+    onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
+/>
+
                                 <Card.Body>
                                     <Card.Title>{movie.title}</Card.Title>
                                     <Card.Text>
                                         Rating: {movie.rated}
                                     </Card.Text>
                                     <Card.Text>{movie.plot}</Card.Text>
-                                    <Link to={"/movies/"+movie._id}>View Reviews</Link>
+                                    <Link className="hover-effect" to={"/movies/"+movie._id}>View Reviews</Link>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -174,8 +202,8 @@ return (
                 })}
             </Row>
             <br/>
-            Showing page: {currentPage}
-            <Button variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
+            <p style={{color: "#FFFF"}}>Showing page: {currentPage}</p>
+            <Button style={{color: "#FF1867"}} variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
                 Get next {entriesPerPage} results
             </Button>
         </Container>

@@ -18,3 +18,15 @@
   background-color: var(--purp);
   border: 2px solid #fff;
 }
+
+.hover-effect {
+  text-decoration: none;
+  color: #ff1874;
+  font-weight: 640;
+}
+/* Apply the hover effect only when the screen width is above a certain threshold, e.g., 600px */
+@media (min-width: 600px) {
+  .hover-effect:hover {
+    font-weight: 690; /* Increase font size on hover */
+  }
+}
