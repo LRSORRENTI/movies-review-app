@@ -184,9 +184,9 @@ return (
                 {movies.map((movie) => {
                     return (
                         <Col>
-                            <Card className="card-bg" style={{width: '18rem', marginBottom: "20px"}}>
+                            <Card className="card-bg">
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
-                            <Card.Img 
+                            <Card.Img className="card-img"
                                  src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
                                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
                                     />
