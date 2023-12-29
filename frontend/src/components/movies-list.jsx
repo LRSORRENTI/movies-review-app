@@ -128,10 +128,13 @@ function isValidHttpUrl(string) {
     return url.protocol === "http:" || url.protocol === "https:";
 }
 
-{/* <Card.Img 
-    src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
-    onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
-/> */}
+
+const getRatingText = (rating) => {
+    if (!rating || rating === "PASSED" || rating === "APPROVED") {
+        return "(Rating Unknown)";
+    }
+    return rating;
+};
 
 
 return (
@@ -181,17 +184,17 @@ return (
                 {movies.map((movie) => {
                     return (
                         <Col>
-                            <Card style={{width: '18rem', marginBottom: "20px"}}>
+                            <Card className="card-bg" style={{width: '18rem', marginBottom: "20px"}}>
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
                             <Card.Img 
-    src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
-    onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
-/>
+                                 src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
+                                 onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
+                                    />
 
                                 <Card.Body>
                                     <Card.Title>{movie.title}</Card.Title>
                                     <Card.Text>
-                                        Rating: {movie.rated}
+                                    Rating: {getRatingText(movie.rated)}
                                     </Card.Text>
                                     <Card.Text>{movie.plot}</Card.Text>
                                     <Link className="hover-effect" to={"/movies/"+movie._id}>View Reviews</Link>
