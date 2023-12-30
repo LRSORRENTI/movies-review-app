@@ -15,7 +15,7 @@ const MoviesList = props => {
     const [movies, setMovies] = useState([]);
     const [searchTitle, setSearchTitle] = useState("");
     const [searchRating, setSearchRatings] = useState("");
-    const [ratings, setRatings] = useState(["All Ratings"]);
+    const [ratings, setRatings] = useState(["Search ratings"]);
 
     const [currentPage, setCurrentPage] = useState(0);
     const [entriesPerPage, setEntriesPerPage] = useState(0);
@@ -156,7 +156,7 @@ return (
                         
                          type="button"
                          onClick={findByTitle}>
-                            Search by title
+                            Search title
                          </Button>
                     </Col>
                     <Col>
@@ -176,7 +176,7 @@ return (
                              type="button"
                              className="searchBtn"
                              onClick={findByRating}>
-                                Search by rating
+                                Search rating
                              </Button>
 
                     </Col>
