@@ -1,0 +1,66 @@
+/* Login Form Container */
+:root {
+  --purp: #4c0bce;
+}
+
+.wrap-login {
+  background-color: rgba(0, 0, 0, 0.574);
+  padding-bottom: 2000px;
+  padding-top: 100px;
+}
+
+.login-container {
+  max-width: 400px;
+  padding: 20px;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.293);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  text-align: center;
+  /* margin-top: 100px; */
+}
+.form-label {
+  color: #d1a41a;
+}
+/* Form Styling */
+.login-form {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+.login-form .form-control {
+  border-radius: 5px;
+  border: 3px solid #d1a41a;
+  padding: 10px;
+  color: #d1a41a;
+}
+
+.login-form .form-label {
+  margin-bottom: 5px;
+  text-align: left;
+  display: block;
+  font-weight: bold;
+}
+
+/* Button Styling */
+.login-form .btn-primary {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #2e2e2e;
+  border-color: #d1a41a;
+  margin-top: 30px;
+  color: #d1a41a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .login-container {
+    width: 90%;
+    padding: 15px;
+  }
+}

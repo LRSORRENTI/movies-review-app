@@ -75,6 +75,18 @@ const retrieveMovies = () => {
 //         })
 //     };
 
+const filterDuplicates = (movies) => {
+    const seen = new Set();
+    return movies.filter(movie => {
+        if (!seen.has(movie._id)) {
+            seen.add(movie._id);
+            return true;
+        }
+        return false;
+    });
+};
+
+
 const onChangeSearchTitle = (e) => {
     setSearchTitle(e.target.value);
 };
@@ -137,6 +149,7 @@ const getRatingText = (rating) => {
 };
 
 
+
 return (
     <div className="App">
         <Container>
@@ -184,9 +197,13 @@ return (
             </Form>
             </div>
             <Row className="movie-row">
-                {movies.map((movie) => {
-                    return (
-                        <Col>
+                {(() => {
+                    const titleTracker = {};
+                    return movies.map((movie) => {
+                        if (!titleTracker[movie.title]) {
+                            titleTracker[movie.title] = true;
+                            return (
+                                <Col key={movie._id}>
                             <Card className="card-bg">
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
                             <Card.Img className="card-img"
@@ -204,8 +221,11 @@ return (
                                 </Card.Body>
                             </Card>
                         </Col>
-                    )
-                })}
+                            )
+                         }
+                       return null
+                     })
+                })()}
             </Row>
             <br/>
             <p style={{color: "#FFFF"}}>Showing page: {currentPage}</p>

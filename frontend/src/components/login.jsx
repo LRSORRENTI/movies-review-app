@@ -10,6 +10,7 @@ sessions etc.. later
 import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import '../login.css'
 
 export default function Login(props) {
     const [name, setName] = useState("")
@@ -41,10 +42,11 @@ export default function Login(props) {
     //     <Login {...props} login={login} />)}/>
 
     return (
-        <div>
-            <Form>
+        <div className="wrap-login">
+        <div className="login-container">
+        <Form className="login-form">
                 <Form.Group>
-                    <Form.Label>
+                    <Form.Label className="form-label">
                         Username
                     </Form.Label>
                     <Form.Control 
@@ -70,6 +72,7 @@ export default function Login(props) {
                     Submit
                 </Button>
             </Form>
+        </div>
         </div>
     );
 };
