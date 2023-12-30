@@ -52,6 +52,30 @@ export default function App() {
         </Navbar.Collapse>
       </Navbar>
       </div>
+      <div className="marquee">
+      <div class="bulb" id="bulb1"></div>
+      <div class="bulb" id="bulb2"></div>
+      <div class="bulb" id="bulb3"></div>
+      <div class="bulb" id="bulb4"></div>
+      <div class="bulb" id="bulb5"></div>
+      <div class="bulb" id="bulb6"></div>
+      <div class="bulb" id="bulb7"></div>
+      <div class="bulb" id="bulb8"></div>
+      <div class="bulb" id="bulb9"></div>
+      <div class="bulb" id="bulb10"></div>
+      <div class="bulb" id="bulb11"></div>
+      <div class="bulb" id="bulb12"></div>
+      <div class="bulb" id="bulb13"></div>
+      <div class="bulb" id="bulb14"></div>
+      <div class="bulb" id="bulb15"></div>
+      <div class="bulb" id="bulb16"></div>
+      <div class="bulb" id="bulb17"></div>
+      <div class="bulb" id="bulb18"></div>
+      <div class="bulb" id="bulb19"></div>
+      <div class="bulb" id="bulb20"></div>
+      <div class="bulb" id="bulb21"></div>
+      <div class="bulb" id="bulb22"></div>
+      </div>
       <Switch>
         <Route exact path={["/", "/movies"]} component={MoviesList} />
         <Route path="/movies/:id/review" render={(props) => (
