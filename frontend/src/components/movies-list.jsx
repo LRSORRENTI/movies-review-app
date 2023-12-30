@@ -15,7 +15,7 @@ const MoviesList = props => {
     const [movies, setMovies] = useState([]);
     const [searchTitle, setSearchTitle] = useState("");
     const [searchRating, setSearchRatings] = useState("");
-    const [ratings, setRatings] = useState(["Search ratings"]);
+    const [ratings, setRatings] = useState(["Pick Rating","G", "PG", "PG-13", "R"]);
 
     const [currentPage, setCurrentPage] = useState(0);
     const [entriesPerPage, setEntriesPerPage] = useState(0);
@@ -64,16 +64,16 @@ const retrieveMovies = () => {
     })
 }
 
-// const retrieveRatings = () => {
-//     MovieDataService.getRatings()
-//         .then(res => {
-//             console.log(res.data)
-//             setRatings(["All Ratings"].concat(res.data))
-//         })
-//         .catch(error => {
-//             console.log(error)
-//         })
-//     };
+const retrieveRatings = () => {
+    MovieDataService.getRatings()
+        .then(res => {
+            console.log(res.data)
+            setRatings(["All Ratings"].concat(res.data))
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    };
 
 const filterDuplicates = (movies) => {
     const seen = new Set();
@@ -160,6 +160,7 @@ return (
                         <Form.Group>
                             <Form.Control 
                               type="text"
+                              className="form-search"
                               placeholder="Search by title"
                               value={searchTitle}
                               onChange={onChangeSearchTitle}
@@ -180,7 +181,7 @@ return (
                         onChange={onChnageSearchRating}>
                         {ratings.map(rating => {
                             return (
-                                <option value={rating}>{rating}</option>
+                                <option className="option" value={rating}>{rating}</option>
                             )
                         })}
                         </Form.Control>
