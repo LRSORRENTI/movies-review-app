@@ -197,9 +197,13 @@ return (
             </Form>
             </div>
             <Row className="movie-row">
-            {filterDuplicates(movies).map((movie) => {
-                    return (
-                        <Col key={movie._id}>
+                {(() => {
+                    const titleTracker = {};
+                    return movies.map((movie) => {
+                        if (!titleTracker[movie.title]) {
+                            titleTracker[movie.title] = true;
+                            return (
+                                <Col key={movie._id}>
                             <Card className="card-bg">
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
                             <Card.Img className="card-img"
@@ -217,8 +221,11 @@ return (
                                 </Card.Body>
                             </Card>
                         </Col>
-                    )
-                })}
+                            )
+                         }
+                       return null
+                     })
+                })()}
             </Row>
             <br/>
             <p style={{color: "#FFFF"}}>Showing page: {currentPage}</p>
