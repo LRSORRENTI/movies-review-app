@@ -1,9 +1,23 @@
+@font-face {
+  font-family: "Limelight";
+  src: url("../public//fonts//Limelight-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: "Limelight", sans-serif;
+}
+
 .search {
   padding-top: 30px;
   padding-bottom: 30px;
   /* border: 2px solid red; */
   margin-bottom: 5px;
   width: 800px;
+}
+
+.link {
+  font-family: "Limelight", sans-serif;
 }
 
 .wrapper1 {
@@ -111,4 +125,11 @@
   /* border: 3px solid blue; */
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 991px) {
+  /* a.nav-link {
+    background-color: red;
+    padding: 10px;
+  } */
 }

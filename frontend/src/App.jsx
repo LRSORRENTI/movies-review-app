@@ -26,26 +26,32 @@ export default function App() {
 
   return (
     <div className="App">
+      <div className="navbar-wrap" style={{}}>
       <Navbar className="nav" expand="lg">
         <Navbar.Brand href="#home"><p class=" movies text-light fs-4 mt-1 ms-2" >Movie Reviews</p></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav"style={{marginRight: "5px"}}/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto mb-2">
-            <Nav.Link>
+          <div className="wrap1" style={{display: "flex", justifyContent: "center"}}>
+            <Nav.Link style={{border: "1px solid #fff", width: "100px", borderRadius: "7px", display:"flex", justifyContent: "center", fontWeight: "700", marginBottom: "5px", marginRight: "15px"}}>
               <Link className="link" to={"/movies"}>Movies</Link>
               </Nav.Link>
-            <Nav.Link>
+              </div>
+              <div className="wrap1" style={{display: "flex", justifyContent: "center"}}>
+            <Nav.Link style={{border: "1px solid #fff", width: "100px", borderRadius: "7px", display:"flex", justifyContent: "center", fontWeight: "700", marginBottom: "5px", marginRight: "15px"}}>
               {
                 user ? (
-                  <a onClick={logout}>Logout user</a>
+                  <a onClick={logout}>Logout</a>
                 ) : (
                   <Link className="link" to={"/login"}>Login</Link>
                 )
               }
             </Nav.Link>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      </div>
       <Switch>
         <Route exact path={["/", "/movies"]} component={MoviesList} />
         <Route path="/movies/:id/review" render={(props) => (
