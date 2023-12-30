@@ -1,20 +1,114 @@
 .search {
   padding-top: 30px;
   padding-bottom: 30px;
+  /* border: 2px solid red; */
+  margin-bottom: 5px;
+  width: 800px;
+}
+
+.wrapper1 {
+  /* border: 5px solid blue; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  /* .search {
+    border: 2px solid lime;
+  } */
+  .wrapper1 {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .row1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .topCol {
+    margin-bottom: 15px;
+  }
+  .bottomCol {
+  }
+  .ratingForm {
+    /* background-color: red; */
+    min-width: 207px;
+    margin-left: 15px;
+  }
+}
+
+.ratingForm {
+  width: 192px;
 }
 
 .searchBtn {
   background-color: var(--purp);
   color: #fff;
-  padding: 5px 9px 5px 9px;
-  margin-top: 10px;
+  /* padding: 1px 3px 1px 2px; */
+  /* margin-top: 10px; */
+  /* padding: -100px; */
   font-weight: bold;
   border-radius: 10px;
   border: 2px solid #fff;
+  margin-left: 20px;
 }
 
 .searchBtn:hover {
   text-decoration: underline;
   background-color: var(--purp);
   border: 2px solid #fff;
+}
+
+.hover-effect {
+  text-decoration: none;
+  color: #fff;
+  background-color: #4c0bce;
+  font-weight: 640;
+  padding: 5px 10px;
+  transition: 0.1s ease;
+  border-radius: 7px;
+}
+/* Apply the hover effect only when the screen width is above a certain threshold, e.g., 600px */
+@media (min-width: 600px) {
+  .hover-effect:hover {
+    font-weight: 690; /* Increase font size on hover */
+  }
+}
+
+.card-bg {
+  background-color: #36454f;
+  color: #fff;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card-bg {
+  border-radius: 15px;
+  width: 18rem;
+  margin-bottom: 20px;
+}
+
+.card-img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.movie-row {
+  display: flex;
+  justify-content: center;
+  /* border: 4px solid red; */
+  align-items: center;
+
+  /* margin-left: 19%; */
+}
+
+.col {
+  /* border: 3px solid blue; */
+  display: flex;
+  justify-content: center;
 }

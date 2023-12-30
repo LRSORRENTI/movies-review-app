@@ -15,7 +15,7 @@ const MoviesList = props => {
     const [movies, setMovies] = useState([]);
     const [searchTitle, setSearchTitle] = useState("");
     const [searchRating, setSearchRatings] = useState("");
-    const [ratings, setRatings] = useState(["All Ratings"]);
+    const [ratings, setRatings] = useState(["Search ratings"]);
 
     const [currentPage, setCurrentPage] = useState(0);
     const [entriesPerPage, setEntriesPerPage] = useState(0);
@@ -76,8 +76,7 @@ const retrieveMovies = () => {
 //     };
 
 const onChangeSearchTitle = (e) => {
-    const searchTitle = e.target.value;
-    setSearchTitle(searchTitle);
+    setSearchTitle(e.target.value);
 };
 
 const onChnageSearchRating = (e) => {
@@ -97,9 +96,15 @@ const find = (query, by) => {
 };
 
 const findByTitle = () => {
-    setCurrentSearchMode("findByTitle")
-    find(searchTitle, "title");
-}
+    setCurrentSearchMode("findByTitle");
+    
+    let searchQuery = searchTitle.trim();
+    if (searchQuery) {
+        searchQuery = `"${searchQuery}"`;
+    }
+
+    find(searchQuery, "title");
+};
 
 const findByRating = () => {
     setCurrentSearchMode("findByRating")
@@ -111,12 +116,34 @@ const findByRating = () => {
     }
 }
 
+function isValidHttpUrl(string) {
+    let url;
+
+    try {
+        url = new URL(string);
+    } catch (_) {
+        return false;  
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+}
+
+
+const getRatingText = (rating) => {
+    if (!rating || rating === "PASSED" || rating === "APPROVED") {
+        return "(Rating Unknown)";
+    }
+    return rating;
+};
+
+
 return (
     <div className="App">
         <Container>
+            <div className="wrapper1">
             <Form className="search">
-                <Row>
-                    <Col>
+                <Row className="row1">
+                    <Col className="topCol">
                         <Form.Group>
                             <Form.Control 
                               type="text"
@@ -129,12 +156,13 @@ return (
                         
                          type="button"
                          onClick={findByTitle}>
-                            Search by title
+                            Search title
                          </Button>
                     </Col>
                     <Col>
                      <Form.Group>
                         <Form.Control
+                        className="ratingForm"
                         as="select"
                         onChange={onChnageSearchRating}>
                         {ratings.map(rating => {
@@ -148,25 +176,31 @@ return (
                              type="button"
                              className="searchBtn"
                              onClick={findByRating}>
-                                Search by rating
+                                Search rating
                              </Button>
 
                     </Col>
                 </Row>
             </Form>
-            <Row>
+            </div>
+            <Row className="movie-row">
                 {movies.map((movie) => {
                     return (
                         <Col>
-                            <Card style={{width: '18rem'}}>
-                                <Card.Img src={movie.poster+"/100px180"}/>
+                            <Card className="card-bg">
+                            {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
+                            <Card.Img className="card-img"
+                                 src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
+                                 onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
+                                    />
+
                                 <Card.Body>
                                     <Card.Title>{movie.title}</Card.Title>
                                     <Card.Text>
-                                        Rating: {movie.rated}
+                                    Rating: {getRatingText(movie.rated)}
                                     </Card.Text>
                                     <Card.Text>{movie.plot}</Card.Text>
-                                    <Link to={"/movies/"+movie._id}>View Reviews</Link>
+                                    <Link className="hover-effect" to={"/movies/"+movie._id}>View Reviews</Link>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -174,8 +208,8 @@ return (
                 })}
             </Row>
             <br/>
-            Showing page: {currentPage}
-            <Button variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
+            <p style={{color: "#FFFF"}}>Showing page: {currentPage}</p>
+            <Button style={{color: "#FF1867"}} variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
                 Get next {entriesPerPage} results
             </Button>
         </Container>
