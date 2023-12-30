@@ -28,7 +28,7 @@ export default function App() {
     <div className="App">
       <div className="navbar-wrap" style={{}}>
       <Navbar className="nav" expand="lg">
-        <Navbar.Brand href="#home"><p class=" movies text-light fs-4 mt-1 ms-2" >Movie Reviews</p></Navbar.Brand>
+        <Navbar.Brand href="#home"><p class=" movies fs-4 mt-1 ms-2" >Movie Reviews</p></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"style={{marginRight: "5px"}}/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto mb-2">

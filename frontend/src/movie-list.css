@@ -59,8 +59,9 @@
 }
 
 .searchBtn {
-  background-color: var(--purp);
-  color: #fff;
+  /* background-color: var(--purp); */
+  color: #d1a41a;
+  background-color: rgba(0, 0, 0, 0.293);
   /* padding: 1px 3px 1px 2px; */
   /* margin-top: 10px; */
   /* padding: -100px; */
@@ -72,14 +73,15 @@
 
 .searchBtn:hover {
   text-decoration: underline;
-  background-color: var(--purp);
+  /* background-color: var(--purp); */
+  background-color: rgba(0, 0, 0, 0.293);
   border: 2px solid #fff;
 }
 
 .hover-effect {
   text-decoration: none;
   color: #fff;
-  background-color: #4c0bce;
+  /* background-color: #4c0bce; */
   font-weight: 640;
   padding: 5px 10px;
   transition: 0.1s ease;

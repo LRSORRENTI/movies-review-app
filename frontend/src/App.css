@@ -8,13 +8,15 @@
 }
 
 .nav {
-  background-color: var(--purp);
+  /* background-color: var(--purp); */
+  background-color: rgba(0, 0, 0, 0.686);
   padding-bottom: 0px;
   padding-top: -1px;
 }
 
 .movies {
   text-decoration: none;
+  color: #d1a41a;
 }
 
 /* Customizing the hamburger icon */
@@ -25,11 +27,11 @@
 /* Customizing the button's outline color */
 .navbar-toggler {
   margin-bottom: 2px;
-  border-color: rgba(255, 255, 255, 0.905); /* Set your desired color */
+  border-color: #d1a41a; /* Set your desired color */
 }
 
 .link {
-  color: #fff;
+  color: #d1a41a;
   text-decoration: none;
 }
 
