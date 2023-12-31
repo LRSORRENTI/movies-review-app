@@ -91,7 +91,7 @@ const onChangeSearchTitle = (e) => {
     setSearchTitle(e.target.value);
 };
 
-const onChnageSearchRating = (e) => {
+const onChangeSearchRating = (e) => {
     const searchRating = e.target.value;
     setSearchRatings(searchRating)
 };
@@ -178,7 +178,7 @@ return (
                         <Form.Control
                         className="ratingForm"
                         as="select"
-                        onChange={onChnageSearchRating}>
+                        onChange={onChangeSearchRating}>
                         {ratings.map(rating => {
                             return (
                                 <option className="option" value={rating}>{rating}</option>

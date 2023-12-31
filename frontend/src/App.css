@@ -66,7 +66,9 @@
 }
 
 #bulb1,
+#bulb3,
 #bulb4,
+#bulb6,
 #bulb7,
 #bulb8,
 #bulb10,
@@ -74,25 +76,25 @@
 #bulb12,
 #bulb13,
 #bulb14,
+#bulb16,
 #bulb17,
 #bulb18,
 #bulb19,
+#bulb21,
 #bulb22 {
   opacity: 1;
 }
 
-#bulb2,
-#bulb15,
-#bulb20 {
+#bulb2 {
   animation: flickerI 4s linear reverse infinite;
 }
 
-#bulb3,
-#bulb6,
-#bulb9,
-#bulb16,
-#bulb21 {
-  animation: flickerH 2s linear reverse infinite;
+#bulb9 {
+  animation: flickerI 9s linear infinite;
+}
+
+#bulb20 {
+  animation: flickerI 8s linear reverse infinite;
 }
 
 /* You can continue adding more bulbs with different animations as needed */
