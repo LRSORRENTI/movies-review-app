@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import MovieDataService from '../services/movies.js';
 import { Link, useParams } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
+import '../add-review.css'
 
 const AddReview = (props) => {
 
@@ -53,7 +54,7 @@ const AddReview = (props) => {
   }
 
   return (
-    <div>
+    <div className='main-cont'>
         {submitted ? (
         <div>
           <h4>Review submitted successful</h4>
@@ -62,20 +63,41 @@ const AddReview = (props) => {
           </Link>
         </div>
         ) : (
-          <Form>
-            <Form.Group>
-              <Form.Label>{editing? "Edit" : "Create"}</Form.Label>
-              <Form.Control
+          <div className="form-container">
+          <Form className='add-rev-form'>
+            <Form.Group className='form-group'>
+              <div className="form-label-wrap">
+              <Form.Label className='form-label'>{editing? "Edit" : "Create Review"}</Form.Label>
+              </div>
+            {/* <div className="form-field-wrap"> */}
+              {/* <Form.Control
+                className='form-field'
                 type="text"
                 required
                 value={review}
                 onChange={onChangeReview}
-              />
+              /> */}
+              {/* </div> */}
+              <div className="form-field-wrap">
+              <textarea
+              className='form-field'
+              type="text"
+              placeholder='Add review text'
+              required
+              value={review}
+              onChange={onChangeReview}
+              name="Add review" 
+              cols="30" 
+              rows="10">
+              </textarea>
+              </div>
+
             </Form.Group>
-            <Button variant='primary' onClick={saveReview}>
+            <Button className='submitReview' variant='primary' onClick={saveReview}>
               Submit
             </Button>
           </Form>
+          </div>
         )}
     </div>
   )
