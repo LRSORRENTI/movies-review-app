@@ -259,7 +259,7 @@
 
 @media (min-width: 992px) {
   .movie-nav a {
-    margin-left: 0px;
+    margin-left: 40px;
   }
   .login-nav a {
     margin-left: 60px;
