@@ -2,6 +2,7 @@
   border: 4px solid red;
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .review-cont {
@@ -60,4 +61,21 @@
 .card-wrapper {
   display: flex;
   justify-content: center;
+}
+
+.add-rev {
+  color: #d1a41a;
+  background-color: rgba(0, 0, 0, 0.293);
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.add-rev:hover {
+  text-decoration: underline;
+  /* background-color: var(--purp); */
+  background-color: rgba(0, 0, 0, 0.293);
+  border: 2px solid #d1a41a;
 }

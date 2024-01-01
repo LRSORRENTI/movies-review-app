@@ -90,6 +90,10 @@ export default function Movie(props) {
                                     </Card.Text>
                                     <Card.Text>{movie.plot}</Card.Text>
                                 </Card.Body>
+                                {props.user &&
+                            <Link className="add-rev" to={"/movies/" + props.match.params.id + "/review"}>
+                                Add Review
+                            </Link> }
                             </Card>
                             </div>
             <Container className="review-cont">
