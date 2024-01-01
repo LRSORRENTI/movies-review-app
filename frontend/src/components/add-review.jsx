@@ -57,8 +57,8 @@ const AddReview = (props) => {
     <div className='main-cont'>
         {submitted ? (
         <div>
-          <h4>Review submitted successful</h4>
-          <Link to={`/movies/${id}`}>
+          <h4 className='submitted'>Review submitted successfully</h4>
+          <Link className="ret-link" to={`/movies/${id}`}>
             Back to movie
           </Link>
         </div>

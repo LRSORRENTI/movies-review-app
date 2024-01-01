@@ -50,6 +50,8 @@ div.App {
 
 .form-label {
   padding-top: 15px;
+  color: #d1a41a;
+  text-decoration: none;
 }
 
 .form-field {
@@ -72,4 +74,30 @@ div.App {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+.submitted {
+  background-color: rgba(0, 0, 0, 0.293);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+  color: #d1a41a;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 8px 16px;
+  margin-bottom: 30px;
+  border: 1px solid #d1a41a;
+}
+
+.ret-link {
+  text-decoration: none;
+  color: #d1a41a;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.293);
+  border-radius: 10px;
+  border: 1px solid #d1a41a;
+}
+
+.ret-link:hover {
+  color: #fff;
 }

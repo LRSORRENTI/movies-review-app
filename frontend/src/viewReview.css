@@ -112,3 +112,12 @@ div.card-body {
   padding-bottom: 10px;
   border-radius: 8px;
 }
+
+.edit-del {
+  color: #d1a41a;
+  text-decoration: none;
+}
+
+.edit-del:hover {
+  color: #fff;
+}

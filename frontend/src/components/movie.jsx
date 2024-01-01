@@ -110,7 +110,7 @@ export default function Movie(props) {
                                 {props.user && props.user.id === review.user_id && 
                                     <Row>
                                         <Col>
-                                            <Link to={{
+                                            <Link className="edit-del" to={{
                                                 pathname:"/movies/" + 
                                                          props.match.params.id + 
                                                          "/review",
@@ -118,7 +118,7 @@ export default function Movie(props) {
                                             }}>Edit</Link>
                                         </Col>
                                         <Col>
-                                        <Button variant="link" onClick={() => deleteReview(review._id, index)}>
+                                        <Button className="edit-del" variant="link" onClick={() => deleteReview(review._id, index)}>
                                             Delete</Button>
                                         </Col>
                                     </Row>
