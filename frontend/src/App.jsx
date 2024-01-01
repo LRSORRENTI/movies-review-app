@@ -41,7 +41,7 @@ export default function App() {
             <Nav.Link style={{border: "1px solid #fff", width: "100px", borderRadius: "7px", display:"flex", justifyContent: "center", fontWeight: "700", marginBottom: "5px", marginRight: "15px"}}>
               {
                 user ? (
-                  <a style={{color: "#d1a41a"}}onClick={logout}>Logout</a>
+                  <a className="a-nav" style={{color: "#d1a41a", textDecoration: "none"}}onClick={logout}>Logout</a>
                 ) : (
                   <Link className="link" to={"/login"}>Login</Link>
                 )

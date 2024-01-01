@@ -40,10 +40,6 @@
   text-decoration: none;
 }
 
-.link:hover {
-  text-decoration: underline;
-}
-
 .marquee {
   display: flex;
   justify-content: space-around;
