@@ -35,9 +35,13 @@
   border-color: #d1a41a; /* Set your desired color */
 }
 
-.link {
+/* .link {
   color: #d1a41a;
   text-decoration: none;
+} */
+
+.link:hover {
+  color: #fff;
 }
 
 .marquee {
@@ -221,4 +225,43 @@
 
 .ratingForm .option:hover {
   cursor: pointer;
+}
+
+.login-nav a {
+  border: 2px solid #fff;
+  text-decoration: none;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 7px;
+  color: #d1a41a;
+}
+
+.login-nav a:hover {
+  border: 2px solid #d1a41a;
+}
+
+.movie-nav a {
+  border: 2px solid #fff;
+  text-decoration: none;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 7px;
+  color: #d1a41a;
+}
+
+.movie-nav a:hover {
+  border: 2px solid #d1a41a;
+}
+
+@media (min-width: 992px) {
+  .movie-nav a {
+    margin-left: 0px;
+  }
+  .login-nav a {
+    margin-left: 60px;
+  }
 }

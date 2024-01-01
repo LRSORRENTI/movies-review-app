@@ -72,10 +72,10 @@
 }
 
 .searchBtn:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   /* background-color: var(--purp); */
   background-color: rgba(0, 0, 0, 0.293);
-  border: 2px solid #fff;
+  border: 2px solid #d1a41a;
 }
 
 .hover-effect {

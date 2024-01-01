@@ -33,12 +33,12 @@ export default function App() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto mb-2">
           <div className="wrap1" style={{display: "flex", justifyContent: "center"}}>
-            <Nav.Link style={{border: "1px solid #fff", width: "100px", borderRadius: "7px", display:"flex", justifyContent: "center", fontWeight: "700", marginBottom: "5px", marginRight: "15px"}}>
+            <Nav.Link className="movie-nav" style={{ width: "100px", borderRadius: "7px", display:"flex", justifyContent: "center", fontWeight: "700", marginBottom: "5px", marginRight: "15px"}}>
               <Link className="link" to={"/movies"}>Movies</Link>
               </Nav.Link>
               </div>
               <div className="wrap1" style={{display: "flex", justifyContent: "center"}}>
-            <Nav.Link style={{border: "1px solid #fff", width: "100px", borderRadius: "7px", display:"flex", justifyContent: "center", fontWeight: "700", marginBottom: "5px", marginRight: "15px"}}>
+            <Nav.Link className="login-nav" style={{ width: "100px", borderRadius: "7px", display:"flex", justifyContent: "center", fontWeight: "700", marginBottom: "5px", marginRight: "15px"}}>
               {
                 user ? (
                   <a className="a-nav" style={{color: "#d1a41a", textDecoration: "none"}}onClick={logout}>Logout</a>
