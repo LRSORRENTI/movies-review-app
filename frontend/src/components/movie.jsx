@@ -24,6 +24,19 @@ export default function Movie(props) {
         reviews: []
     })
 
+    function isValidHttpUrl(string) {
+        let url;
+    
+        try {
+            url = new URL(string);
+        } catch (_) {
+            return false;  
+        }
+    
+        return url.protocol === "http:" || url.protocol === "https:";
+    }
+    
+
     const deleteReview = (reviewId, index) => {
         // this function will call the MovieDataService
         // delete endpoint on the reviews controller on 
@@ -65,7 +78,10 @@ export default function Movie(props) {
             <Container>
                 <Row>
                     <Col>
-                    <Image src={movie.poster+"/100pxx250"} fluid />
+                    <Card.Img className="card-img"
+                                 src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
+                                 onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
+                                    />
                     </Col>
                     <Col>
                     <Card>
