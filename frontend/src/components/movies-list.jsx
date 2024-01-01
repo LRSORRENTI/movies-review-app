@@ -207,7 +207,7 @@ return (
                                 <Col key={movie._id}>
                             <Card className="card-bg">
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
-                            <Card.Img className="card-img"
+                            <Card.Img style={{minHeight: "480px", objectFit: "cover", width: "100%"}} className="card-img"
                                  src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
                                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
                                     />
@@ -217,7 +217,7 @@ return (
                                     <Card.Text>
                                     Rating: {getRatingText(movie.rated)}
                                     </Card.Text>
-                                    <Card.Text>{movie.plot}</Card.Text>
+                                    <Card.Text>{movie.plot ? movie.plot : "Plot details are not available for this movie."}</Card.Text>
                                     <Link className="hover-effect" to={"/movies/"+movie._id}>View Reviews</Link>
                                 </Card.Body>
                             </Card>
