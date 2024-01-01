@@ -105,7 +105,7 @@ export default function Movie(props) {
                             <Card key={index}>
                             <div className="rev-body-wrap">
                             <Card.Body className="rev-body">
-                                <h5 className="card-h5">{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
+                                <h5 className="card-h5">{review.name + ": "}{momemt(review.date).format("( MMMM Do, YYYY )")}</h5>
                                 <p>{review.review}</p>
                                 {props.user && props.user.id === review.user_id && 
                                     <Row>
