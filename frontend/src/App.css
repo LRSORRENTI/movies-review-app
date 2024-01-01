@@ -68,14 +68,17 @@
 #bulb1,
 #bulb3,
 #bulb4,
+#bulb5,
 #bulb6,
 #bulb7,
 #bulb8,
+#bulb9,
 #bulb10,
 #bulb11,
 #bulb12,
 #bulb13,
 #bulb14,
+#bulb15,
 #bulb16,
 #bulb17,
 #bulb18,
@@ -89,9 +92,9 @@
   animation: flickerI 4s linear reverse infinite;
 }
 
-#bulb9 {
+/* #bulb9 {
   animation: flickerI 9s linear infinite;
-}
+} */
 
 #bulb20 {
   animation: flickerI 8s linear reverse infinite;
