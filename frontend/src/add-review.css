@@ -1,0 +1,103 @@
+html {
+  background-color: rgba(0, 0, 0, 0.63);
+}
+
+div.App {
+  background-color: rgba(0, 0, 0, 0.63);
+}
+
+.main-cont {
+  margin-top: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
+}
+
+.submitReview {
+  /* background-color: var(--purp); */
+  color: #d1a41a;
+  background-color: rgba(0, 0, 0, 0.293);
+  /* padding: 1px 3px 1px 2px; */
+  /* margin-top: 10px; */
+  /* padding: -100px; */
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  margin-left: 12px;
+}
+
+.submitReview:hover {
+  color: #d1a41a;
+  background-color: rgba(0, 0, 0, 0.293);
+  padding-top: 0.475rem;
+  border: 1px solid #d1a41a;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.add-rev-form {
+  background-color: rgba(0, 0, 0, 0.686);
+  width: 300px;
+  border-radius: 10px;
+  padding-bottom: 20px;
+}
+
+.form-label {
+  padding-top: 15px;
+  color: #d1a41a;
+  text-decoration: none;
+}
+
+.form-field {
+  display: flex;
+  width: 250px;
+  height: 200px;
+}
+
+.form-field-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  display: block;
+  margin: auto;
+}
+.form-label-wrap {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.submitted {
+  background-color: rgba(0, 0, 0, 0.293);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+  color: #d1a41a;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 8px 16px;
+  margin-bottom: 30px;
+  border: 1px solid #d1a41a;
+}
+
+.ret-link {
+  text-decoration: none;
+  color: #d1a41a;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.293);
+  border-radius: 10px;
+  border: 1px solid #d1a41a;
+}
+
+.ret-link:hover {
+  color: #fff;
+}

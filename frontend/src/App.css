@@ -35,13 +35,13 @@
   border-color: #d1a41a; /* Set your desired color */
 }
 
-.link {
+/* .link {
   color: #d1a41a;
   text-decoration: none;
-}
+} */
 
 .link:hover {
-  text-decoration: underline;
+  color: #fff;
 }
 
 .marquee {
@@ -66,33 +66,38 @@
 }
 
 #bulb1,
+#bulb3,
 #bulb4,
+#bulb5,
+#bulb6,
 #bulb7,
 #bulb8,
+#bulb9,
 #bulb10,
 #bulb11,
 #bulb12,
 #bulb13,
 #bulb14,
+#bulb15,
+#bulb16,
 #bulb17,
 #bulb18,
 #bulb19,
+#bulb21,
 #bulb22 {
   opacity: 1;
 }
 
-#bulb2,
-#bulb15,
-#bulb20 {
+#bulb2 {
   animation: flickerI 4s linear reverse infinite;
 }
 
-#bulb3,
-#bulb6,
-#bulb9,
-#bulb16,
-#bulb21 {
-  animation: flickerH 2s linear reverse infinite;
+/* #bulb9 {
+  animation: flickerI 9s linear infinite;
+} */
+
+#bulb20 {
+  animation: flickerI 8s linear reverse infinite;
 }
 
 /* You can continue adding more bulbs with different animations as needed */
@@ -220,4 +225,43 @@
 
 .ratingForm .option:hover {
   cursor: pointer;
+}
+
+.login-nav a {
+  border: 2px solid #fff;
+  text-decoration: none;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 7px;
+  color: #d1a41a;
+}
+
+.login-nav a:hover {
+  border: 2px solid #d1a41a;
+}
+
+.movie-nav a {
+  border: 2px solid #fff;
+  text-decoration: none;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 7px;
+  color: #d1a41a;
+}
+
+.movie-nav a:hover {
+  border: 2px solid #d1a41a;
+}
+
+@media (min-width: 992px) {
+  .movie-nav a {
+    margin-left: 40px;
+  }
+  .login-nav a {
+    margin-left: 60px;
+  }
 }

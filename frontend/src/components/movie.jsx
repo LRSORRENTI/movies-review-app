@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 // import Media from 'react-bootstrap/Media'
+import '../viewReview.css'
 
 export default function Movie(props) {
     
@@ -23,6 +24,19 @@ export default function Movie(props) {
         rated: "",
         reviews: []
     })
+
+    function isValidHttpUrl(string) {
+        let url;
+    
+        try {
+            url = new URL(string);
+        } catch (_) {
+            return false;  
+        }
+    
+        return url.protocol === "http:" || url.protocol === "https:";
+    }
+    
 
     const deleteReview = (reviewId, index) => {
         // this function will call the MovieDataService
@@ -61,55 +75,42 @@ export default function Movie(props) {
     }, [props.match.params.id])
     
     return(
-        <div>
-            <Container>
-                <Row>
-                    <Col>
-                    <Image src={movie.poster+"/100pxx250"} fluid />
-                    </Col>
-                    <Col>
-                    <Card>
-                        <Card.Header as="h5">{movie.title}</Card.Header>
-                        <Card.Body>
-                            <Card.Text>
-                                {movie.plot}
-                            </Card.Text>
-                            {props.user &&
-                            <Link to={"/movies/" + props.match.params.id + "/review"}>
+        <div className="review-wrap">
+            <div className="card-wrapper">
+              <Card className="card-bg">
+                            {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
+                            <Card.Img className="card-img"
+                                 src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
+                                 onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
+                                    />
+
+                                <Card.Body>
+                                    <Card.Title>{movie.title}</Card.Title>
+                                    <Card.Text>
+                                    </Card.Text>
+                                    <Card.Text>{movie.plot}</Card.Text>
+                                </Card.Body>
+                                {props.user &&
+                            <Link className="add-rev" to={"/movies/" + props.match.params.id + "/review"}>
                                 Add Review
                             </Link> }
-                        </Card.Body>
-                    </Card>
+                            </Card>
+                            </div>
+            <Container className="review-cont">
+                    
                     <br></br>
                     {movie.reviews.map((review, index) => {
                         return (
-                            // <Media key={index}>
-                            //     <Media.Body>
-                            //         <h5>{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
-                            //         <p>{review.review}</p>
-                            //         {props.user && props.user.id === review.user_id && 
-                            //             <Row>
-                            //                 <Col>
-                            //                     <Link to={{
-                            //                         pathname:"/movies/" + 
-                            //                                  props.match.params.id + 
-                            //                                  "/review",
-                            //                         state: {currentReview: review}
-                            //                     }}>Edit</Link>
-                            //                 </Col>
-                            //                 <Col><Button variant="link">Delete</Button></Col>
-                            //             </Row>
-                            //         }
-                            //     </Media.Body>
-                            // </Media>
+                            <div className="rev-wrap">
                             <Card key={index}>
-                            <Card.Body>
-                                <h5>{review.name + " reviewed on "}{momemt(review.date).format("Do MMMM YYYY")}</h5>
+                            <div className="rev-body-wrap">
+                            <Card.Body className="rev-body">
+                                <h5 className="card-h5">{review.name + ": "}{momemt(review.date).format("( MMMM Do, YYYY )")}</h5>
                                 <p>{review.review}</p>
                                 {props.user && props.user.id === review.user_id && 
                                     <Row>
                                         <Col>
-                                            <Link to={{
+                                            <Link className="edit-del" to={{
                                                 pathname:"/movies/" + 
                                                          props.match.params.id + 
                                                          "/review",
@@ -117,17 +118,17 @@ export default function Movie(props) {
                                             }}>Edit</Link>
                                         </Col>
                                         <Col>
-                                        <Button variant="link" onClick={() => deleteReview(review._id, index)}>
+                                        <Button className="edit-del" variant="link" onClick={() => deleteReview(review._id, index)}>
                                             Delete</Button>
                                         </Col>
                                     </Row>
                                 }
                             </Card.Body>
+                            </div>
                         </Card>
+                        </div>
                         )
                     })}
-                    </Col>
-                </Row>
             </Container>
         </div>
     );

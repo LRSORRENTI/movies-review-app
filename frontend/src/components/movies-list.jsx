@@ -91,7 +91,7 @@ const onChangeSearchTitle = (e) => {
     setSearchTitle(e.target.value);
 };
 
-const onChnageSearchRating = (e) => {
+const onChangeSearchRating = (e) => {
     const searchRating = e.target.value;
     setSearchRatings(searchRating)
 };
@@ -178,7 +178,7 @@ return (
                         <Form.Control
                         className="ratingForm"
                         as="select"
-                        onChange={onChnageSearchRating}>
+                        onChange={onChangeSearchRating}>
                         {ratings.map(rating => {
                             return (
                                 <option className="option" value={rating}>{rating}</option>
@@ -207,7 +207,7 @@ return (
                                 <Col key={movie._id}>
                             <Card className="card-bg">
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
-                            <Card.Img className="card-img"
+                            <Card.Img style={{minHeight: "480px", objectFit: "cover", width: "100%"}} className="card-img"
                                  src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
                                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
                                     />
@@ -217,7 +217,7 @@ return (
                                     <Card.Text>
                                     Rating: {getRatingText(movie.rated)}
                                     </Card.Text>
-                                    <Card.Text>{movie.plot}</Card.Text>
+                                    <Card.Text>{movie.plot ? movie.plot : "Plot details are not available for this movie."}</Card.Text>
                                     <Link className="hover-effect" to={"/movies/"+movie._id}>View Reviews</Link>
                                 </Card.Body>
                             </Card>
@@ -230,7 +230,7 @@ return (
             </Row>
             <br/>
             <p style={{color: "#FFFF"}}>Showing page: {currentPage}</p>
-            <Button style={{color: "#FF1867"}} variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
+            <Button style={{color: "#d1a41a", textDecoration: "none"}} variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
                 Get next {entriesPerPage} results
             </Button>
         </Container>
