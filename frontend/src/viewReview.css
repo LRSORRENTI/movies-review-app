@@ -6,24 +6,57 @@
   background-color: rgba(0, 0, 0, 0.488);
 }
 
+.large-wrap {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.large-wrap::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 @media (min-width: 1100px) {
   .review-wrap {
+    display: flex;
+    justify-content: center;
     flex-direction: row;
   }
   .large-wrap {
     display: flex;
+    flex-grow: 0; /* Do not allow the movie card to grow */
+    flex-shrink: 0; /* Do not allow the movie card to shrink */
+    flex-basis: auto; /* Base size on content */
+    overflow: auto; /* Add scroll for overflow */
+    max-height: 800px;
+    flex-direction: row;
     justify-content: center;
+    padding-left: 30%;
+    /* Example max height */
   }
   .card-bg {
-    margin-left: 100px;
+    /* margin-left: 300px;
     margin-right: 100px;
+    */
     margin-top: 22px;
-    padding-bottom: 500px;
+    display: flex;
+    justify-content: center;
+    background-color: #36454f;
+  }
+
+  .review-cont {
+    flex-grow: 1;
+    margin-right: 200px;
   }
 
   /* .rev-body {
     height: 200px;
   } */
+}
+
+@media (min-width: 1100px) {
+  .large-wrap {
+    padding-left: 20%;
+  }
 }
 
 .review-cont {

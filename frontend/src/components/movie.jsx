@@ -76,7 +76,7 @@ export default function Movie(props) {
     
     return(
         <div className="large-wrap">
-        <div className="review-wrap">
+        {/* <div className="review-wrap"> */}
             <div className="card-wrapper">
               <Card className="card-bg">
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
@@ -131,7 +131,7 @@ export default function Movie(props) {
                         )
                     })}
             </Container>
-        </div>
+        {/* </div> */}
         </div>
     );
 };
