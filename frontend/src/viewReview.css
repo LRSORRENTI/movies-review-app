@@ -7,6 +7,7 @@
 }
 
 .large-wrap {
+  background-color: #2a2a2a;
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
 }
@@ -111,7 +112,8 @@
   flex-direction: row;
   justify-content: center;
   /* border: 5px solid purple; */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .card-wrapper {
@@ -173,8 +175,23 @@
   color: #d1a41a;
   text-decoration: none;
   transition: 0.3s ease;
+  /* border: 3px solid #fff; */
+  text-align: center;
 }
 
 .edit-del:hover {
+  color: #fff;
+}
+
+.edit {
+  color: #d1a41a;
+  text-decoration: none;
+  transition: 0.3s ease;
+
+  text-align: center;
+  margin-top: 7px;
+}
+
+.edit:hover {
   color: #fff;
 }

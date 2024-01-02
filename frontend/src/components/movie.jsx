@@ -111,7 +111,7 @@ export default function Movie(props) {
                                 {props.user && props.user.id === review.user_id && 
                                     <Row>
                                         <Col>
-                                            <Link className="edit-del" to={{
+                                            <Link className="edit" to={{
                                                 pathname:"/movies/" + 
                                                          props.match.params.id + 
                                                          "/review",
