@@ -240,6 +240,7 @@
   padding-bottom: 7px;
   border-radius: 7px;
   color: #d1a41a;
+  transition: 0.3s ease-in-out;
 }
 
 .login-nav a:hover {
@@ -255,6 +256,7 @@
   padding-bottom: 7px;
   border-radius: 7px;
   color: #d1a41a;
+  transition: 0.3s ease-in-out;
 }
 
 .movie-nav a:hover {
@@ -267,8 +269,5 @@
   }
   .login-nav a {
     margin-left: 60px;
-  }
-  .ratingForm {
-    margin-right: 5px;
   }
 }
