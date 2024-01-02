@@ -89,7 +89,12 @@
   padding: 5px 10px;
   transition: 0.1s ease;
   border-radius: 7px;
+  transition: 0.3s ease-in-out;
 }
+.hover-effect:hover {
+  color: #d1a41a;
+}
+
 /* Apply the hover effect only when the screen width is above a certain threshold, e.g., 600px */
 @media (min-width: 600px) {
   .hover-effect:hover {
