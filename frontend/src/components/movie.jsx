@@ -75,6 +75,7 @@ export default function Movie(props) {
     }, [props.match.params.id])
     
     return(
+        <div className="large-wrap">
         <div className="review-wrap">
             <div className="card-wrapper">
               <Card className="card-bg">
@@ -130,6 +131,7 @@ export default function Movie(props) {
                         )
                     })}
             </Container>
+        </div>
         </div>
     );
 };
