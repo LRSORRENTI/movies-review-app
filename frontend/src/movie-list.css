@@ -70,6 +70,8 @@
   border: 2px solid #fff;
   margin-left: 20px;
   margin-bottom: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .searchBtn:hover {

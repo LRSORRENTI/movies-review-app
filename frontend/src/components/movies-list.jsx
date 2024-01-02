@@ -161,7 +161,7 @@ return (
                             <Form.Control 
                               type="text"
                               className="form-search"
-                              placeholder="Search by title"
+                              placeholder="Search By Title"
                               value={searchTitle}
                               onChange={onChangeSearchTitle}
                               />
@@ -170,7 +170,7 @@ return (
                         
                          type="button"
                          onClick={findByTitle}>
-                            Search title
+                            Search Title
                          </Button>
                     </Col>
                     <Col>
@@ -190,7 +190,7 @@ return (
                              type="button"
                              className="searchBtn"
                              onClick={findByRating}>
-                                Search rating
+                                Search Rating
                              </Button>
 
                     </Col>
