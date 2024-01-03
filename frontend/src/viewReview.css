@@ -7,8 +7,12 @@
   background-color: rgba(0, 0, 0, 0.488);
 }
 
+.review-cont {
+  background-color: rgb(35, 35, 35);
+}
+
 .large-wrap {
-  background-color: #2a2a2a;
+  background-color: rgb(35, 35, 35);
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
   margin-top: 20px;
