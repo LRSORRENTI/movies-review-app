@@ -29,8 +29,8 @@ export default function App() {
       <div className="navbar-wrap" style={{}}>
       <Navbar className="nav" expand="lg">
         <Navbar.Brand href="#home"><p class=" movies fs-4 mt-1 ms-2" >Movie Reviews</p></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"style={{marginRight: "5px"}}/>
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="fa-bars"/>
+        <Navbar.Collapse className="bars" id="basic-navbar-nav">
           <Nav className="mr-auto mb-2">
           <div className="wrap1" style={{display: "flex", justifyContent: "center"}}>
             <Nav.Link className="movie-nav" style={{ width: "100px", borderRadius: "7px", display:"flex", justifyContent: "center", fontWeight: "700", marginBottom: "5px", marginRight: "15px"}}>
@@ -41,7 +41,7 @@ export default function App() {
             <Nav.Link className="login-nav" style={{ width: "100px", borderRadius: "7px", display:"flex", justifyContent: "center", fontWeight: "700", marginBottom: "5px", marginRight: "15px"}}>
               {
                 user ? (
-                  <a className="a-nav" style={{color: "#d1a41a", textDecoration: "none"}}onClick={logout}>Logout</a>
+                  <a className="a-nav" onClick={logout}>Logout</a>
                 ) : (
                   <Link className="link" to={"/login"}>Login</Link>
                 )

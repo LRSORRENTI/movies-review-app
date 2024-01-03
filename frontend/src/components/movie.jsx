@@ -75,7 +75,8 @@ export default function Movie(props) {
     }, [props.match.params.id])
     
     return(
-        <div className="review-wrap">
+        <div className="large-wrap">
+        {/* <div className="review-wrap"> */}
             <div className="card-wrapper">
               <Card className="card-bg">
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
@@ -105,12 +106,12 @@ export default function Movie(props) {
                             <Card key={index}>
                             <div className="rev-body-wrap">
                             <Card.Body className="rev-body">
-                                <h5 className="card-h5">{review.name + ": "}{momemt(review.date).format("( MMMM Do, YYYY )")}</h5>
+                                <h5 className="card-h5">{review.name + ": "}{momemt(review.date).format("- MMMM Do, YYYY ")}</h5>
                                 <p>{review.review}</p>
                                 {props.user && props.user.id === review.user_id && 
                                     <Row>
                                         <Col>
-                                            <Link className="edit-del" to={{
+                                            <Link className="edit" to={{
                                                 pathname:"/movies/" + 
                                                          props.match.params.id + 
                                                          "/review",
@@ -130,6 +131,7 @@ export default function Movie(props) {
                         )
                     })}
             </Container>
+        {/* </div> */}
         </div>
     );
 };

@@ -45,12 +45,10 @@
   .topCol {
     margin-bottom: 15px;
   }
-  .bottomCol {
-  }
   .ratingForm {
     /* background-color: red; */
     min-width: 207px;
-    margin-left: 15px;
+    margin-left: 7px;
   }
 }
 
@@ -69,6 +67,10 @@
   border-radius: 10px;
   border: 2px solid #fff;
   margin-left: 20px;
+  margin-bottom: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  transition: 0.5s ease;
 }
 
 .searchBtn:hover {
@@ -86,7 +88,12 @@
   padding: 5px 10px;
   transition: 0.1s ease;
   border-radius: 7px;
+  transition: 0.3s ease-in-out;
 }
+.hover-effect:hover {
+  color: #d1a41a;
+}
+
 /* Apply the hover effect only when the screen width is above a certain threshold, e.g., 600px */
 @media (min-width: 600px) {
   .hover-effect:hover {
@@ -134,4 +141,13 @@
     background-color: red;
     padding: 10px;
   } */
+}
+.getNextResults {
+  color: #d1a41a;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.getNextResults:hover {
+  color: #fff;
 }

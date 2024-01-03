@@ -161,7 +161,7 @@ return (
                             <Form.Control 
                               type="text"
                               className="form-search"
-                              placeholder="Search by title"
+                              placeholder="Search By Title"
                               value={searchTitle}
                               onChange={onChangeSearchTitle}
                               />
@@ -170,7 +170,7 @@ return (
                         
                          type="button"
                          onClick={findByTitle}>
-                            Search title
+                            Search Title
                          </Button>
                     </Col>
                     <Col>
@@ -190,7 +190,7 @@ return (
                              type="button"
                              className="searchBtn"
                              onClick={findByRating}>
-                                Search rating
+                                Search Rating
                              </Button>
 
                     </Col>
@@ -207,7 +207,7 @@ return (
                                 <Col key={movie._id}>
                             <Card className="card-bg">
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
-                            <Card.Img style={{minHeight: "480px", objectFit: "cover", width: "100%"}} className="card-img"
+                            <Card.Img style={{minHeight: "450px", objectFit: "cover", width: "100%"}} className="card-img"
                                  src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
                                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
                                     />
@@ -230,7 +230,7 @@ return (
             </Row>
             <br/>
             <p style={{color: "#FFFF"}}>Showing page: {currentPage}</p>
-            <Button style={{color: "#d1a41a", textDecoration: "none"}} variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
+            <Button className="getNextResults" style={{textDecoration: "none"}} variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
                 Get next {entriesPerPage} results
             </Button>
         </Container>

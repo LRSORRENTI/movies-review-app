@@ -1,9 +1,69 @@
 .review-wrap {
   /* border: 4px solid red; */
   display: flex;
+  margin-top: 10px;
   flex-direction: column;
   padding-top: 20px;
   background-color: rgba(0, 0, 0, 0.488);
+}
+
+.review-cont {
+  background-color: rgb(35, 35, 35);
+}
+
+.large-wrap {
+  background-color: rgb(35, 35, 35);
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  margin-top: 20px;
+}
+
+.large-wrap::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+@media (min-width: 1100px) {
+  .review-wrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  .large-wrap {
+    display: flex;
+    flex-grow: 0; /* Do not allow the movie card to grow */
+    flex-shrink: 0; /* Do not allow the movie card to shrink */
+    flex-basis: auto; /* Base size on content */
+    overflow: auto; /* Add scroll for overflow */
+    max-height: 800px;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 30%;
+    /* Example max height */
+  }
+  .card-bg {
+    /* margin-left: 300px;
+    margin-right: 100px;
+    */
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    background-color: #36454f;
+  }
+
+  .review-cont {
+    flex-grow: 1;
+    margin-right: 200px;
+  }
+
+  /* .rev-body {
+    height: 200px;
+  } */
+}
+
+@media (min-width: 1100px) {
+  .large-wrap {
+    padding-left: 20%;
+  }
 }
 
 .review-cont {
@@ -43,7 +103,7 @@
   /* background-color: #4c0bce; */
   font-weight: 640;
   padding: 5px 10px;
-  transition: 0.1s ease;
+  transition: 0.4s ease;
   border-radius: 7px;
 }
 /* Apply the hover effect only when the screen width is above a certain threshold, e.g., 600px */
@@ -58,12 +118,16 @@
   flex-direction: row;
   justify-content: center;
   /* border: 5px solid purple; */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  margin-top: 50px;
 }
 
 .card-wrapper {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
+  background-color: rgb(35, 35, 35);
 }
 
 .add-rev {
@@ -74,12 +138,14 @@
   border: 2px solid #fff;
   text-decoration: none;
   font-size: 20px;
+  transition: 0.3s ease;
 }
 
 .add-rev:hover {
   /* background-color: var(--purp); */
   background-color: rgba(0, 0, 0, 0.293);
   border: 2px solid #d1a41a;
+  color: #fff;
 }
 
 .card-h5 {
@@ -117,8 +183,24 @@
 .edit-del {
   color: #d1a41a;
   text-decoration: none;
+  transition: 0.3s ease;
+  /* border: 3px solid #fff; */
+  text-align: center;
 }
 
 .edit-del:hover {
+  color: #fff;
+}
+
+.edit {
+  color: #d1a41a;
+  text-decoration: none;
+  transition: 0.3s ease;
+
+  text-align: center;
+  margin-top: 7px;
+}
+
+.edit:hover {
   color: #fff;
 }

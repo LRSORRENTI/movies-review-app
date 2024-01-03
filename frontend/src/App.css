@@ -4,7 +4,7 @@
 
 .App {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.574);
+  /* background-color: rgba(0, 0, 0, 0.574); */
 }
 
 .nav {
@@ -35,10 +35,10 @@
   border-color: #d1a41a; /* Set your desired color */
 }
 
-/* .link {
+.link {
   color: #d1a41a;
   text-decoration: none;
-} */
+}
 
 .link:hover {
   color: #fff;
@@ -196,7 +196,8 @@
 
 .ratingForm {
   font-size: 18px;
-  border: 1px solid #d1a41a;
+  border: 3px solid #d1a41a;
+  color: rgba(0, 0, 0, 0.686);
 }
 
 .ratingForm:focus {
@@ -204,12 +205,15 @@
 }
 
 .form-search {
-  font-weight: 900;
-  border: 1px solid #d1a41a;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-weight: bolder;
+  border: 3px solid #d1a41a;
 }
 
 .form-search:focus {
   border: 3px solid #ffdf00;
+  font-weight: 900;
 }
 
 .option {
@@ -235,11 +239,16 @@
   padding-top: 7px;
   padding-bottom: 7px;
   border-radius: 7px;
-  color: #d1a41a;
+  /* color: #d1a41a; */
+  transition: 0.3s ease-in-out;
 }
 
 .login-nav a:hover {
   border: 2px solid #d1a41a;
+  color: #fff;
+}
+.a-nav {
+  color: #d1a41a;
 }
 
 .movie-nav a {
@@ -251,10 +260,12 @@
   padding-bottom: 7px;
   border-radius: 7px;
   color: #d1a41a;
+  transition: 0.3s ease-in-out;
 }
 
 .movie-nav a:hover {
   border: 2px solid #d1a41a;
+  color: #fff;
 }
 
 @media (min-width: 992px) {
@@ -264,4 +275,14 @@
   .login-nav a {
     margin-left: 60px;
   }
+}
+
+.fa-bars {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.movie-row.row {
+  /* border: 3px solid red; */
+  align-items: flex-start;
 }
