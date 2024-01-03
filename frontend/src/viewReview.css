@@ -123,6 +123,7 @@
   margin-top: 50px;
   display: flex;
   justify-content: center;
+  background-color: rgb(35, 35, 35);
 }
 
 .add-rev {

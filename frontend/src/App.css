@@ -4,7 +4,8 @@
 
 .App {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.574);
+  background-color: rgb(35, 35, 35);
+  /* background-color: rgba(0, 0, 0, 0.574); */
 }
 
 .nav {
@@ -17,7 +18,6 @@
 .movies {
   text-decoration: none;
   color: #d1a41a;
-  padding-left: 10px;
   /* background-color: #fff; */
   /* letter-spacing: 5px;
   text-shadow: 1px 1px 0px #000, -2px 0 0px #000, 1px 1px 0 #fff; */
