@@ -4,7 +4,6 @@
 
 .App {
   text-align: center;
-  background-color: rgb(35, 35, 35);
   /* background-color: rgba(0, 0, 0, 0.574); */
 }
 
@@ -240,12 +239,16 @@
   padding-top: 7px;
   padding-bottom: 7px;
   border-radius: 7px;
-  color: #d1a41a;
+  /* color: #d1a41a; */
   transition: 0.3s ease-in-out;
 }
 
 .login-nav a:hover {
   border: 2px solid #d1a41a;
+  color: #fff;
+}
+.a-nav {
+  color: #d1a41a;
 }
 
 .movie-nav a {
@@ -262,6 +265,7 @@
 
 .movie-nav a:hover {
   border: 2px solid #d1a41a;
+  color: #fff;
 }
 
 @media (min-width: 992px) {
