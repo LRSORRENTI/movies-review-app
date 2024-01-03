@@ -1,9 +1,9 @@
 html {
-  background-color: rgba(0, 0, 0, 0.63);
+  background-color: rgba(0, 0, 0, 0.833);
 }
 
 div.App {
-  background-color: rgba(0, 0, 0, 0.63);
+  background-color: rgba(0, 0, 0, 0.833);
 }
 
 .main-cont {
@@ -86,7 +86,7 @@ div.App {
   color: #d1a41a;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 8px 16px;
   margin-bottom: 30px;
-  border: 1px solid #d1a41a;
+  border: 2px solid #fff;
 }
 
 .ret-link {
@@ -95,9 +95,11 @@ div.App {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.293);
   border-radius: 10px;
-  border: 1px solid #d1a41a;
+  border: 2px solid #fff;
+  transition: 0.6s ease;
 }
 
 .ret-link:hover {
   color: #fff;
+  border: 2px solid #d1a41a;
 }
