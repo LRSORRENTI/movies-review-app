@@ -35,10 +35,10 @@
   border-color: #d1a41a; /* Set your desired color */
 }
 
-/* .link {
+.link {
   color: #d1a41a;
   text-decoration: none;
-} */
+}
 
 .link:hover {
   color: #fff;
