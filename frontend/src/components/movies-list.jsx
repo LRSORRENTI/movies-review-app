@@ -230,7 +230,7 @@ return (
             </Row>
             <br/>
             <p style={{color: "#FFFF"}}>Showing page: {currentPage}</p>
-            <Button style={{color: "#d1a41a", textDecoration: "none"}} variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
+            <Button className="getNextResults" style={{textDecoration: "none"}} variant="link" onClick={() => {setCurrentPage(currentPage + 1)}}>
                 Get next {entriesPerPage} results
             </Button>
         </Container>

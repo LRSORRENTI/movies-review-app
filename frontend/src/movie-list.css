@@ -144,3 +144,12 @@
     padding: 10px;
   } */
 }
+.getNextResults {
+  color: #d1a41a;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.getNextResults:hover {
+  color: #fff;
+}
