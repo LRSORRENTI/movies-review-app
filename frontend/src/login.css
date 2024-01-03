@@ -13,9 +13,9 @@
   max-width: 400px;
   padding: 20px;
   margin: auto;
-  background-color: rgba(0, 0, 0, 0.293);
+  background-color: rgb(35, 35, 35);
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  box-shadow: 0 0 10px #d1a41a; /* subtle shadow */
   text-align: center;
   /* margin-top: 100px; */
 }

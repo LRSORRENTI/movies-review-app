@@ -207,7 +207,7 @@ return (
                                 <Col key={movie._id}>
                             <Card className="card-bg">
                             {/* <Card.Img src={movie.poster ? movie.poster + "/100px180" : "/images/posterNotFound.png"} /> */}
-                            <Card.Img style={{minHeight: "480px", objectFit: "cover", width: "100%"}} className="card-img"
+                            <Card.Img style={{minHeight: "450px", objectFit: "cover", width: "100%"}} className="card-img"
                                  src={movie.poster && isValidHttpUrl(movie.poster) ? movie.poster + "/100px180" : "/images/posterNotFound.png"}
                                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/posterNotFound.png"; }}
                                     />

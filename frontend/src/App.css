@@ -281,3 +281,8 @@
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
+.movie-row.row {
+  /* border: 3px solid red; */
+  align-items: flex-start;
+}
