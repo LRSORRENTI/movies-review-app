@@ -2,7 +2,7 @@
 
 ### Description
 
-**This application allows users to log in, search for movies, and leave reviews. It supports basic CRUD (Create, Read, Update, Delete) operations for adding, deleting, and editing reviews.**
+**This MERN application allows users to log in, search for movies, and leave reviews. It supports basic CRUD (Create, Read, Update, Delete) operations for adding, deleting, and editing reviews.**
 
 ## Frontend
 
